@@ -10,9 +10,3 @@ RedirectMatch 404 /\.
 
 # Disable gzip for test files
 SetEnvIf Request_URI \.bin$ no-gzip dont-vary
-
-# Forcing http
-RewriteEngine On
-RewriteBase /
-RewriteCond %{HTTPS} on
-RewriteRule ^ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
