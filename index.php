@@ -156,7 +156,7 @@ function isValidIPv6($ip)
         <p class="pull-right">
             <a href="#">Back to top</a>
         </p>
-        <p>Powered by <a href="http://github.com/telephone/LookingGlass">LookingGlass</a> | Modified by <a href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a></p>
+        <p>Powered by <a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | Modified by <a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a></p>
       </footer>
 
     </div><!-- /container -->
