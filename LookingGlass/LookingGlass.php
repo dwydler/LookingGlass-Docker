@@ -16,6 +16,24 @@ namespace Telephone;
  */
 class LookingGlass
 {
+	/**
+     * Check if $_SERVER['REMOTE_ADDR'] is IPv6 or not.
+     * 
+     *
+     * @param  string $_SERVER['REMOTE_ADDR'
+     *   
+     * @return boolean
+     *   True on success
+     */
+    public function checkipv6($ip)
+    {
+        if(filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+            return true;
+        }
+        return false;
+    }
+	
+	
     /**
      * Execute a 'host' command against given host:
      * Host is a simple utility for performing DNS lookups

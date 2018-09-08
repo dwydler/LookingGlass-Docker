@@ -106,11 +106,11 @@ if (file_exists('LookingGlass/Config.php')) {
                 <select name="cmd" class="input-medium" style="margin-left: 5px;">
                   <option value="host">host</option>
                   <option value="mtr">mtr</option>
-                  <?php if (!empty($ipv6)) { echo '<option value="mtr6">mtr6</option>'; } ?>
+                  <?php if (!empty($ipv6) and (checkipv6($_SERVER['REMOTE_ADDR']))) { echo '<option value="mtr6">mtr6</option>'; } ?>
                   <option value="ping" selected="selected">ping</option>
-                  <?php if (!empty($ipv6)) { echo '<option value="ping6">ping6</option>'; } ?>
+                  <?php if (!empty($ipv6)and (checkipv6($_SERVER['REMOTE_ADDR']))) { echo '<option value="ping6">ping6</option>'; } ?>
                   <option value="traceroute">traceroute</option>
-                  <?php if (!empty($ipv6)) { echo '<option value="traceroute6">traceroute6</option>'; } ?>
+                  <?php if (!empty($ipv6)and (checkipv6($_SERVER['REMOTE_ADDR']))) { echo '<option value="traceroute6">traceroute6</option>'; } ?>
                 </select>
                 <button type="submit" id="submit" name="submit" class="btn btn-primary" style="margin-left: 10px;">Run Test</button>
               </fieldset>
