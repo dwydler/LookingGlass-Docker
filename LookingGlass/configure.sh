@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Enable case insensitive comparison
+shopt -s nocasematch
+
 ################################
 # LookingGlass - User friendly PHP Looking Glass
 #
@@ -483,3 +487,6 @@ Installation is complete
 
 EOF
 sleep 1
+
+#Disable case insensitive comparison
+shopt -u nocasematch
