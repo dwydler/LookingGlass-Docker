@@ -201,7 +201,6 @@ Unknown Operating system. Install dependencies manually:
 host mtr iputils-ping traceroute sqlite3
 #####################
 EOF
-		#return
 	fi
 
 	# command host
