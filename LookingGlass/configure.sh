@@ -1,8 +1,4 @@
 #!/bin/bash
-
-# Enable case insensitive comparison
-shopt -s nocasematch
-
 ################################
 # LookingGlass - User friendly PHP Looking Glass
 #
@@ -50,6 +46,16 @@ function createConfig()
 \$siteUrl = '${URL}';
 // Server location
 \$serverLocation = '${LOCATION}';
+// HOST
+\$host = '${HOST}';
+// MTR
+\$mtr = '${MTR}';
+// PING
+\$ping = '${PING}';
+// TRACEROUTE
+\$traceroute = '${TRACEROUTE}';
+// SQLITE3
+\$sqlite3 = '${SQLITE3}';
 // Test files
 \$testFiles = array();
 EOF
@@ -167,76 +173,93 @@ EOF
 ##
 # Check and install script requirements
 ##
-function requirements()
-{
-  sleep 1
-  # Check for apt-get/yum
-  if [ -f /usr/bin/apt-get ]; then
-    # Check for root
-    if [ $(id -u) != "0" ]; then
-      INSTALL='sudo apt-get'
-    else
-      INSTALL='apt-get'
-    fi
-  elif [ -f /usr/bin/yum ]; then
-    # Check for root
-    if [ $(id -u) != "0" ]; then
-      INSTALL='sudo yum'
-    else
-      INSTALL='yum'
-    fi
-  else
-    cat <<EOF
+function requirements() {
+	sleep 1
+	
+	# Check for apt-get/yum
+	if [ -f /usr/bin/apt-get ]; then
+		# Check for root
+		if [ $(id -u) != "0" ]; then
+			INSTALL='sudo apt-get'
+		else
+			INSTALL='apt-get'
+		fi
+	elif [ -f /usr/bin/yum ]; then
+		# Check for root
+		if [ $(id -u) != "0" ]; then
+			INSTALL='sudo yum'
+		else
+			INSTALL='yum'
+		fi
+	else
+		INSTALL='none'
+		
+		cat <<EOF
 
 ##### IMPORTANT #####
 Unknown Operating system. Install dependencies manually:
 host mtr iputils-ping traceroute sqlite3
 #####################
 EOF
-    return
-  fi
+		#return
+	fi
 
-  # Array of required functions
-  local REQUIRE=(host mtr iputils-ping traceroute sqlite3)
-
-  # Loop through required & install
-  for i in "${REQUIRE[@]}"; do
-    # Fix host for CentOS
-    if [ $i = 'host' ]; then
-      echo 'Checking for host...'
-      if [ ! -f "/usr/bin/$i" ]; then
-        if [ $INSTALL = 'yum' ]; then
-          ${INSTALL} -y install "bind-utils"
+	# command host
+	echo 'Checking for host...'
+	if [ ! -f "/usr/bin/host" ]; then
+		if [ $INSTALL = 'none' ]; then
+			HOST='0'
+		elif [ $INSTALL = 'yum' ]; then
+			${INSTALL} -y install "bind-utils"
         else
-          ${INSTALL} -y install ${i}
+			${INSTALL} -y install "host"
         fi
         echo
-      fi
-    # Fix ping
-    elif [ $i = 'iputils-ping' ]; then
-      echo 'Checking for ping...'
-      if [ ! -f "/bin/ping" ]; then
-        ${INSTALL} -y install ${i}
+	fi
+  
+	# command mtr
+	echo 'Checking for mtr...'
+	if [ ! -f "/usr/bin/mtr" ]; then
+		if [ $INSTALL = 'none' ]; then
+			MTR='0'
+		else
+			${INSTALL} -y install "mtr"
+		fi
         echo
-      fi
-    # Check both bin and sbin
-    elif [ $i = 'traceroute' ]; then
-      echo "Checking for $i..."
-      if [ ! -f "/usr/bin/$i" ]; then
-        if [ ! -f "/usr/sbin/$i" ]; then
-          ${INSTALL} -y install ${i}
-          echo
+	fi
+  
+	# command ping
+	echo 'Checking for ping...'
+	if [ ! -f "/bin/ping" ]; then
+		if [ $INSTALL = 'none' ]; then
+			PING='0'
+		else
+			${INSTALL} -y install "iputils-ping"
         fi
-      fi
-    else
-      echo "Checking for $i..."
-      if [ ! -f "/usr/bin/$i" ]; then
-        ${INSTALL} -y install ${i}
+		echo
+	fi
+	
+	# command traceroute
+	echo 'Checking for traceroute...'
+	if [ ! -f "/usr/bin/traceroute" ] && [ ! -f "/usr/sbin/traceroute" ]; then
+		if [ $INSTALL = 'none' ]; then
+			TRACEROUTE='0'
+		else
+			${INSTALL} -y install "traceroute"
+		fi
         echo
-      fi
-    fi
-    sleep 1
-  done
+	fi
+	
+	# command sqlite3
+	echo 'Checking for sqlite3...'
+	if [ ! -f "/usr/bin/sqlite3" ]; then
+		if [ $INSTALL = 'none' ]; then
+			SQLITE3='0'
+		else
+			${INSTALL} -y install "sqlite3"
+		fi
+        echo
+	fi
 }
 
 ##
@@ -442,8 +465,14 @@ LOCATION=
 RATELIMIT=
 SITE=
 URL=
+HOST=
+MTR=
+PING=
+TRACEROUTE=
+SQLITE3=
 TEST=()
 THEME=
+
 
 # Install required scripts
 echo 'Checking script requirements:'
@@ -487,6 +516,3 @@ Installation is complete
 
 EOF
 sleep 1
-
-#Disable case insensitive comparison
-shopt -u nocasematch
