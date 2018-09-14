@@ -73,40 +73,42 @@ EOF
 ##
 function config()
 {
-  sleep 1
-  # Check if previous config exists
-  if [ ! -f $CONFIG ]; then
-    # Create config file
-    echo 'Creating Config.php...'
-    echo ' ' > "$DIR/$CONFIG"
-  else
-    echo 'Loading Config.php...'
-  fi
+	sleep 1
+	# Check if previous config exists
+	if [ ! -f $CONFIG ]; then
+		# Create config file
+		echo 'Creating Config.php...'
+		echo ' ' > "$DIR/$CONFIG"
+	else
+		echo 'Loading Config.php...'
+	fi
 
-  sleep 1
+	sleep 1
 
-  # Read Config line by line
-  while IFS="=" read -r f1 f2 || [ -n "$f1" ]; do
-    # Read variables
-    if [ "$(echo $f1 | head -c 1)" = '$' ]; then
-      # Set Variables
-      if [ $f1 = '$ipv4' ]; then
-        IPV4="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-      elif [ $f1 = '$ipv6' ]; then
-        IPV6="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-      elif [ $f1 = '$rateLimit' ]; then
-        RATELIMIT=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-      elif [ $f1 = '$serverLocation' ]; then
-        LOCATION="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-      elif [ $f1 = '$siteName' ]; then
-        SITE=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-      elif [ $f1 = '$siteUrl' ]; then
-        URL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-      elif [ $f1 = '$testFiles[]' ]; then
-        TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-      elif [ $f1 = '$theme' ]; then
-        THEME="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-      fi
+	# Read Config line by line
+	while IFS="=" read -r f1 f2 || [ -n "$f1" ]; do
+		# Read variables
+		if [ "$(echo $f1 | head -c 1)" = '$' ]; then
+			# Set Variables
+		if [ $f1 = '$ipv4' ]; then
+			IPV4="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+		elif [ $f1 = '$ipv6' ]; then
+			IPV6="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+		elif [ $f1 = '$rateLimit' ]; then
+			RATELIMIT=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+		elif [ $f1 = '$serverLocation' ]; then
+			LOCATION="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+		elif [ $f1 = '$siteName' ]; then
+			SITE=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+		elif [ $f1 = '$siteUrl' ]; then
+			URL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+		elif [ $f1 = '$sqlite3' ]; then
+			SQLITE3=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+		elif [ $f1 = '$testFiles[]' ]; then
+			TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+		elif [ $f1 = '$theme' ]; then
+			THEME="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+		fi
     fi
   done < "$DIR/$CONFIG"
 }
@@ -283,7 +285,9 @@ function setup()
   read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IP4" IP4
   read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
   read -e -p "Enter the size of test files in MB (Example: 25MB 50MB 100MB) [${TEST[*]}]: " T
-  read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " RATE
+  if [ -z $SQLITE3 ]; then
+	read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " RATE
+  fi
 
   # Check local vars aren't empty; Set new values
   if [[ -n $IP4 ]]; then
@@ -499,15 +503,21 @@ echo
 # Theme
 defaultTheme
 echo
+
 # Create Config.php file
 echo 'Creating Config.php...'
 createConfig
+
 # Create DB
-database
+if [ -z $SQLITE3 ]; then
+	database
+fi
+
 # Check for RHEL mtr
 if [ "$INSTALL" = 'yum' ]; then
   mtrFix
 fi
+
 # All done
 cat <<EOF
 
