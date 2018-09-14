@@ -208,7 +208,7 @@ EOF
 	echo 'Checking for host...'
 	if [ ! -f "/usr/bin/host" ]; then
 		if [ $INSTALL = 'none' ]; then
-			HOST='0'
+			HOST='NULL'
 		elif [ $INSTALL = 'yum' ]; then
 			${INSTALL} -y install "bind-utils"
         else
@@ -221,7 +221,7 @@ EOF
 	echo 'Checking for mtr...'
 	if [ ! -f "/usr/bin/mtr" ]; then
 		if [ $INSTALL = 'none' ]; then
-			MTR='0'
+			MTR='NULL'
 		else
 			${INSTALL} -y install "mtr"
 		fi
@@ -232,7 +232,7 @@ EOF
 	echo 'Checking for ping...'
 	if [ ! -f "/bin/ping" ]; then
 		if [ $INSTALL = 'none' ]; then
-			PING='0'
+			PING='NULL'
 		else
 			${INSTALL} -y install "iputils-ping"
         fi
@@ -243,7 +243,7 @@ EOF
 	echo 'Checking for traceroute...'
 	if [ ! -f "/usr/bin/traceroute" ] && [ ! -f "/usr/sbin/traceroute" ]; then
 		if [ $INSTALL = 'none' ]; then
-			TRACEROUTE='0'
+			TRACEROUTE='NULL'
 		else
 			${INSTALL} -y install "traceroute"
 		fi
@@ -254,7 +254,7 @@ EOF
 	echo 'Checking for sqlite3...'
 	if [ ! -f "/usr/bin/sqlite3" ]; then
 		if [ $INSTALL = 'none' ]; then
-			SQLITE3='0'
+			SQLITE3='NULL'
 		else
 			${INSTALL} -y install "sqlite3"
 		fi
