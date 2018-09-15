@@ -256,9 +256,11 @@ EOF
 	if [ ! -f "/usr/bin/sqlite3" ]; then
 		if [ $INSTALL = 'none' ]; then
 			SQLITE3='NULL'
-		else
+		elif [ $INSTALL = 'yum' ]; then
+			${INSTALL} -y install "sqlite-devel"
+        else
 			${INSTALL} -y install "sqlite3"
-		fi
+        fi
         echo
 	fi
 }
