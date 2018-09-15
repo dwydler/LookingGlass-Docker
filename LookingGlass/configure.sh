@@ -271,8 +271,8 @@ function setup()
   sleep 1
 
   # Local vars
-  local IP4=$(hostname -I | cut -d' ' -f1)
-  local IP6=$(hostname -I | cut -d' ' -f2)
+  local IP4=$(ifconfig | sed -n '2 p' | awk '{print $2}')
+  local IP6=$(ifconfig | sed -n '3 p' | awk '{print $2}')
   local LOC=
   local S=
   local T=
