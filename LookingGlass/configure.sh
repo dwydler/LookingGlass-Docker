@@ -286,7 +286,7 @@ function setup()
   read -e -p "Enter the servers location [${LOCATION}]: " LOC
   read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IP4" IP4
   read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
-  read -e -p "Enter the size of test files in MB (Example: 25MB 50MB 100MB) [${TEST[*]}]: " T
+  read -e -p "Enter the size of test files in MB (Example: 25 50 100) [${TEST[*]}]: " T
   if [ -z $SQLITE3 ]; then
 	read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$RATELIMIT" RATE
   fi
@@ -352,7 +352,7 @@ function testFiles()
   for i in "${TEST[@]}"; do
     if [[ -n i ]] && [ ! -f "../${i}.bin" ]; then
       echo "Creating $i test file"
-      shred --exact --iterations=1 --size="${i}" - > "../${i}.bin"
+	  dd if=/dev/zero of=${i}MB.bin bs=1M count=${i}
       A=$((A+1))
       sleep 1
     fi
