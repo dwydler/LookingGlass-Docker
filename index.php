@@ -37,7 +37,7 @@ if (file_exists('LookingGlass/Config.php')) {
 			<div class="row" id="header">
 				<div class="col-xs-12">
 					<div class="page-header">
-						<h1><a id="title" href="<?php echo $siteUrl; ?>"><?php echo $siteName; ?></a></h1>
+						<h1><a id="title" href="http://<?php echo $siteUrl; ?>"><?php echo $siteName; ?></a></h1>
 					</div>
 				</div>
 			</div>
@@ -59,12 +59,21 @@ if (file_exists('LookingGlass/Config.php')) {
 					<div class="panel panel-default">
 						<div class="panel-heading">Network Test Files</div>
 						<div class="panel-body">
-							<h4>Download Test</h4>
+							<h4>IPv4 Download Test</h4>
 							<?php
 								foreach ($testFiles as $val) 
+									{
+									echo "<a href=\"//ipv4.{$siteUrl}/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
+									}
+							?>
+							<?php if (!empty($ipv6)) 
 								{
-									echo "<a href=\"{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
-								}
+								echo "<h4>IPv6 Download Test</h4>";
+								foreach ($testFiles as $val) 
+									{
+									echo "<a href=\"//ipv6.{$siteUrl}/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
+									}
+								} 
 							?>
 						</div>
 					</div>
