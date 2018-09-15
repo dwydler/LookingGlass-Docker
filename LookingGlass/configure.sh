@@ -288,7 +288,7 @@ function setup()
   read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
   read -e -p "Enter the size of test files in MB (Example: 25MB 50MB 100MB) [${TEST[*]}]: " T
   if [ -z $SQLITE3 ]; then
-	read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " RATE
+	read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$RATELIMIT" RATE
   fi
 
   # Check local vars aren't empty; Set new values
