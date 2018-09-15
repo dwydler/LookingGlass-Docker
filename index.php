@@ -59,24 +59,13 @@ if (file_exists('LookingGlass/Config.php')) {
 					<div class="panel panel-default">
 						<div class="panel-heading">Network Test Files</div>
 						<div class="panel-body">
-							<h4>IPv4 Download Test</h4>
+							<h4>Download Test</h4>
 							<?php
 								foreach ($testFiles as $val) 
 								{
-									echo "<a href=\"//{$ipv4}/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
+									echo "<a href=\"{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
 								}
 							?>
-							
-							<?php if (!empty($ipv6)) 
-								{
-									echo "<h4>IPv6 Download Test</h4>";
-									foreach ($testFiles as $val) 
-									{
-										echo "<a href=\"//[{$ipv6}]/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
-									}
-								} 
-							?>
-							
 						</div>
 					</div>
 				</div>
