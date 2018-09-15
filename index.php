@@ -11,141 +11,137 @@ if (file_exists('LookingGlass/Config.php')) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<!--
-                 __ _
-               .: .' '.
-              /: /     \_
-             ;: ;  ,-'/`:\
-             |: | |  |() :|
-             ;: ;  '-.\_:/
-              \: \     /`
-               ':_'._.'
-                  ||
-                 /__\
-      .---.     {====}
-    .'   _,"-,__|::  |
-   /    ((O)=;--.::  |
-  ;      `|: |  |::  |
-  |       |: |  |::  |            *****************************
-  |       |: |  |::  |            * LookingGlass by Telephone *
-  |       |: |  |::  |            *  http://iamtelephone.com  *
-  |       |: |  |::  |            *****************************
-  |       |: |  |::  |
-  |      /:'__\ |::  |
-  |     [______]|::  |
-  |      `----` |::  |__
-  |         _.--|::  |  ''--._
-  ;       .'  __{====}__      '.
-   \    .'_.-'._ `""` _.'-._    '.
-    '--'/`      `''''`      `\    '.__
-        '._                _.'
-           `""--......--""`
--->
-  <head>
-    <meta charset="utf-8">
-    <title><?php echo $siteName; ?> - Looking Glass</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="LookingGlass - Open source PHP looking glass">
-    <meta name="author" content="Telephone">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="LookingGlass - Open source PHP looking glass">
+		<meta name="author" content="Telephone">
+		
+		<title><?php echo $siteName; ?> - Looking Glass</title>
 
-    <!-- IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+		<!-- IE6-8 support of HTML elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 
-    <!-- Styles -->
-    <link href="assets/css/<?php echo $theme; ?>.min.css" rel="stylesheet">
-  </head>
-  <body>
-    <!-- Container -->
-    <div class="container">
+		<!-- Styles -->
+		<link href="assets/css/<?php echo $theme; ?>" rel="stylesheet">
+	</head>
+  
+	<body>
+		<!-- Container -->
+		<div class="container">
 
-      <!-- Header -->
-      <header class="header nohighlight" id="overview">
-        <div class="row">
-          <div class="span12">
-            <h1><a id="title" href="<?php echo $siteUrl; ?>"><?php echo $siteName; ?></a></h1>
-          </div>
-        </div>
-      </header>
+			<!-- Header -->
+			<div class="row" id="header">
+				<div class="col-xs-12">
+					<div class="page-header">
+						<h1><a id="title" href="<?php echo $siteUrl; ?>"><?php echo $siteName; ?></a></h1>
+					</div>
+				</div>
+			</div>
 
-      <!-- Network Information -->
-      <section id="information">
-        <div class="row">
-          <div class="span12">
-            <div class="well">
-              <span id="legend">Network information</span><!-- IE/Safari dislike <legend> out of context -->
-              <p>Server Location: <b><?php echo $serverLocation; ?></b></p>
-              <div style="margin-left: 10px;">
-                <p>Test IPv4: <?php echo $ipv4; ?></p>
-                <p><?php if (!empty($ipv6)) { echo 'Test IPv6: '.$ipv6; } ?></p>
-                <p>Test files: <?php
-                  foreach ($testFiles as $val) {
-                    echo "<a href=\"{$val}.bin\" id=\"testfile\">{$val}</a> ";
-                  }
-                ?></p>
-              </div>
-              <p>Your IP Address: <b><a href="#tests" id="userip"><?php echo $_SERVER['REMOTE_ADDR']; ?></a></b></p>
-            </div>
-          </div>
-        </div>
-      </section>
+			<!-- Network Information -->
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Network information</div>
+						<div class="panel-body">
+							<p>Server Location: <strong><?php echo $serverLocation; ?></strong></p>
+							<p>IPv4 Address: <?php echo $ipv4; ?></p>
+							<?php if (!empty($ipv6)) { echo '<p>IPv6 Address: '; echo $ipv6; echo '</p>'; } ?>
+							<p>Your IP Address: <strong><a href="#tests" id="userip"><?php echo $_SERVER['REMOTE_ADDR']; ?></a></strong></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">Network Test Files</div>
+						<div class="panel-body">
+							<h4>IPv4 Download Test</h4>
+							<?php
+								foreach ($testFiles as $val) 
+								{
+									echo "<a href=\"//{$ipv4}/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
+								}
+							?>
+							
+							<?php if (!empty($ipv6)) 
+								{
+									echo "<h4>IPv6 Download Test</h4>";
+									foreach ($testFiles as $val) 
+									{
+										echo "<a href=\"//[{$ipv6}]/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
+									}
+								} 
+							?>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Network Tests -->
+		  
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">Network tests</div>
+						<div class="panel-body">
+							<form class="form-inline" id="networktest" action="#results" method="post">
+							
+								<div id="hosterror" class="form-group">
+									<div class="controls">
+										<input id="host" name="host" type="text" class="form-control" placeholder="Host or IP address">
+									</div>
+								</div>
+								<div class="form-group">
+									<select name="cmd" class="form-control">
+										<?php 
+										  if (empty($host)) { echo '<option value="host">host</option>'; }
+										  if (empty($mtr)) { echo '<option value="mtr">mtr</option>'; }
+										  if ( (!empty($ipv6)) and (empty($mtr)) ) { echo '<option value="mtr6">mtr6</option>'; }
+										  if (empty($ping)) { echo '<option value="ping" selected="selected">ping</option>'; }
+										  if ( (!empty($ipv6)) and (empty($ping)) ) { echo '<option value="ping6">ping6</option>'; }
+										  if (empty($traceroute)) { echo '<option value="traceroute">traceroute</option>'; }
+										  if ( (!empty($ipv6)) and (empty($traceroute)) ) { echo '<option value="traceroute6">traceroute6</option>'; }
+										  ?>
+									</select>
+								</div>
+						
+								<button type="submit" id="submit" name="submit" class="btn btn-success">Run Test</button>
+							</form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
 
-      <!-- Network Tests -->
-      <section id="tests">
-        <div class="row">
-          <div class="span12">
-            <form class="well form-inline" id="networktest" action="#results" method="post">
-              <fieldset>
-                <span id="legend">Network tests</span>
-                <div id="hosterror" class="control-group">
-                  <div class="controls">
-                    <input id="host" name="host" type="text" class="input-large" placeholder="Host or IP address">
-                  </div>
-                </div>
-                <select name="cmd" class="input-medium" style="margin-left: 5px;">
-                  <?php 
-				  if (empty($host)) { echo '<option value="host">host</option>'; }
-                  if (empty($mtr)) { echo '<option value="mtr">mtr</option>'; }
-                  if ( (!empty($ipv6)) and (empty($mtr)) ) { echo '<option value="mtr6">mtr6</option>'; }
-                  if (empty($ping)) { echo '<option value="ping" selected="selected">ping</option>'; }
-                  if ( (!empty($ipv6)) and (empty($ping)) ) { echo '<option value="ping6">ping6</option>'; }
-                  if (empty($traceroute)) { echo '<option value="traceroute">traceroute</option>'; }
-                  if ( (!empty($ipv6)) and (empty($traceroute)) ) { echo '<option value="traceroute6">traceroute6</option>'; }
-				  ?>
-                </select>
-                <button type="submit" id="submit" name="submit" class="btn btn-primary" style="margin-left: 10px;">Run Test</button>
-              </fieldset>
-            </form>
-          </div>
-        </div>
-      </section>
+			<!-- Results -->
+			<div class="row" id="results" style="display:none">
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">Results</div>
+						<div class="panel-body">
+						
+							<pre id="response" style="display:none"></pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		  
+			<footer class="footer">
+				<p class="pull-right">
+					<a href="#">Back to top</a>
+				</p
+				<p>Powered by <a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | Modified by <a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a> | Version 20180915-1205</p>
+			</footer>
 
-      <!-- Results -->
-      <section id="results" style="display:none">
-        <div class="row">
-          <div class="span12">
-            <div class="well">
-              <span id="legend">Results</span>
-              <pre id="response" style="display:none"></pre>
-            </div>
-          </div>
-        </div>
-      </section>
+		</div>
 
-      <!-- Footer -->
-      <footer class="footer nohighlight">
-        <p class="pull-right">
-            <a href="#">Back to top</a>
-        </p>
-        <p>Powered by <a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | Modified by <a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a> | Version 20180915-1205</p>
-      </footer>
-
-    </div><!-- /container -->
-
-    <!-- Javascript -->
-    <script src="assets/js/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/LookingGlass.min.js"></script>
-    <script src="assets/js/XMLHttpRequest.min.js"></script>
-  </body>
+		<script src="assets/js/jquery-1.12.4.min.js"></script>
+		<script src="assets/js/LookingGlass.min.js"></script>
+		<script src="assets/js/XMLHttpRequest.min.js"></script>
+	</body>
 </html>

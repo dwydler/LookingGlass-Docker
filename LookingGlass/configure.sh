@@ -371,7 +371,7 @@ function defaultTheme()
 {
   # Set default theme
   if [[ "$THEME" = '' ]]; then
-    THEME='cerulean'
+    THEME='bootstrap.min.css'
   fi
 
   # Change theme
@@ -409,7 +409,7 @@ function themeChange()
 
   if [[ -n $NEWTHEME ]]; then
     # Check for valid theme
-    VALID=(cerulean readable spacelab united)
+    VALID=(bootstrap.min.css)
     MATCH=$(echo "${VALID[@]:0}" | grep -o $NEWTHEME)
     if [[ ! -z $MATCH ]]; then
       THEME=$NEWTHEME
