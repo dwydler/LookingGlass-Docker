@@ -13,7 +13,7 @@ $(document).ready(function() {
     var data = 'cmd=' + $('select[name=cmd]').val() + '&host=' + host;
     // quick validation
     if (host == '') {
-        $('#hosterror').addClass('error');
+        $('#hosterror').addClass('has-error');
     }
     // submit form
     else {
@@ -44,7 +44,7 @@ $(document).ready(function() {
         // output response
         if (xhr.responseText == 'Unauthorized request') {
           $('#results').hide();
-          $('#hosterror').addClass('error');
+          $('#hosterror').addClass('has-error');
         } else {
           $('#response').html(xhr.responseText.replace(/<br \/> +/g, '<br />'));
         }
