@@ -37,7 +37,7 @@ $(document).ready(function() {
         if (xhr.responseText == '') {
           $('#response').hide();
         } else {
-          $('#hosterror').removeClass('error');
+          $('#hosterror').removeClass('has-error');
           $('#response, #results').show();
         }
 
