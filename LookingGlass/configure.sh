@@ -153,14 +153,14 @@ EOF
 ##
 function mtrFix()
 {
-  # Check permissions for MTR & Symbolic link
-  if [ $(stat --format="%a" /usr/sbin/mtr) -ne 4755 ] || [ ! -f "/usr/bin/mtr" ]; then
-    if [ $(id -u) = "0" ]; then
-      echo 'Fixing MTR permissions...'
-      chmod 4755 /usr/sbin/mtr
-      ln -s /usr/sbin/mtr /usr/bin/mtr
-    else
-      cat <<EOF
+	# Check permissions for MTR & Symbolic link
+	if [ $(stat --format="%a" /usr/sbin/mtr) -ne 4755 ] || [ ! -f "/usr/bin/mtr" ]; then
+		if [ $(id -u) = "0" ]; then
+			echo 'Fixing MTR permissions...'
+			chmod 4755 /usr/sbin/mtr
+			ln -s /usr/sbin/mtr /usr/bin/mtr
+		else
+			cat <<EOF
 
 ##### IMPORTANT #####
 You are not root. Please log into root and run:
@@ -168,8 +168,8 @@ chmod 4755 /usr/sbin/mtr
 ln -s /usr/sbin/mtr /usr/bin/mtr
 #####################
 EOF
-    fi
-  fi
+		fi
+	fi
 }
 
 ##
@@ -220,7 +220,7 @@ EOF
   
 	# command mtr
 	echo 'Checking for mtr...'
-	if [ ! -f "/usr/bin/mtr" ]; then
+	if [ ! -f "/usr/bin/mtr" ] || [ ! -f "/usr/sbin/mtr" ] ; then
 		if [ $INSTALL = 'none' ]; then
 			MTR='NULL'
 		else
@@ -516,7 +516,7 @@ if [ -z $SQLITE3 ]; then
 fi
 
 # Check for RHEL mtr
-if [ "$INSTALL" = 'yum' ]; then
+if [ "$INSTALL" = 'yum' ] && ["$MTR" = '']; then
   mtrFix
 fi
 
