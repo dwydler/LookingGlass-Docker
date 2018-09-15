@@ -124,7 +124,7 @@ if (file_exists('LookingGlass/Config.php')) {
 				<p class="pull-right">
 					<a href="#">Back to top</a>
 				</p
-				<p>Powered by <a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | Modified by <a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a> | Version 20180915-1205</p>
+				<p>Powered by <a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | Modified by <a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a></p>
 			</footer>
 
 		</div>
