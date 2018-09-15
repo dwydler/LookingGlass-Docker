@@ -35,31 +35,16 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 * PHP PDO with SQLite driver (required for rate-limit)
 * SSH/Terminal access (able to install commands/functions if non-existent)
 
-## Install
+## Install / Update
 
-1. Download [LookingGlass](https://github.com/telephone/LookingGlass/archive/v1.3.0.tar.gz) to the intended
+1. Download [LookingGlass](https://github.com/StadtBadWurzach/LookingGlass/archive/master.zip) to the intended
 folder within your web directory
-2. Extract archive:
-    - Option #1 - Extract archive to the current directory:
-        - `tar -zxvf LookingGlass-1.3.0.tar.gz --strip-components 1`
-    - Option #2 - Extract archive to a directory named `LookingGlass`:
-        - `tar -zxvf LookingGlass-1.3.0.tar.gz --transform 's!^[^/]\+\($\|/\)!LookingGlass\1!'`
-3. Navigate to the `LookingGlass` subdirectory in terminal
-4. Run `bash configure.sh`
-5. Follow the instructions and `configure.sh` will take care of the rest
-
-_Forgot a setting? Simply run the `configure.sh` script again_
-
-## Updating
-
-1. Download [LookingGlass](https://github.com/telephone/LookingGlass/archive/v1.3.0.tar.gz) to the folder containing
-your existing install
-2. Extract archive: `tar -zxvf LookingGlass-1.3.0.tar.gz --overwrite --strip-components 1`
-    - This will overwrite/update existing files
-3. Navigate to the `LookingGlass` subdirectory in terminal
-4. Run `bash configure.sh`
-5. Follow the instructions and `configure.sh` will take care of the rest
-    - Note: Re-enter test files to create random test files from `GNU shred`
+2. Move archive to the correct directory
+3. Extract archive with unzip master.zip
+4. Navigate to the `LookingGlass` subdirectory in terminal
+5. Run `bash configure.sh`
+6. Follow the instructions and `configure.sh` will take care of the rest
+	- Note: Re-enter test files to create random test files from `GNU dd`
 
 _Forgot a setting? Simply run the `configure.sh` script again_
 
