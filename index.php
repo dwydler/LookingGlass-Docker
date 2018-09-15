@@ -78,7 +78,7 @@ if (file_exists('LookingGlass/Config.php')) {
               <p>Server Location: <b><?php echo $serverLocation; ?></b></p>
               <div style="margin-left: 10px;">
                 <p>Test IPv4: <?php echo $ipv4; ?></p>
-                <p><?php if (!empty($ipv6)) { echo 'Test IPv6: ',$ipv6; } ?></p>
+                <p><?php if (!empty($ipv6)) { echo 'Test IPv6: '.$ipv6; } ?></p>
                 <p>Test files: <?php
                   foreach ($testFiles as $val) {
                     echo "<a href=\"{$val}.bin\" id=\"testfile\">{$val}</a> ";
