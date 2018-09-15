@@ -352,7 +352,7 @@ function testFiles()
   for i in "${TEST[@]}"; do
     if [[ -n i ]] && [ ! -f "../${i}.bin" ]; then
       echo "Creating $i test file"
-	  dd if=/dev/zero of=${i}.bin bs=1M count=$($i | sed '1,$s/[A-Z]//g')
+	  dd if=/dev/zero of=${i}.bin bs=1M count=${i} | sed '1,$s/[A-Z]//g'
       A=$((A+1))
       sleep 1
     fi
