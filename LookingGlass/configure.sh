@@ -291,8 +291,8 @@ function setup()
   # User input
   read -e -p "Enter your website name (Header/Logo) [${SITE}]: " S
   read -e -p "Enter the public URL to this LG (including http://) [${URL}]: " U
-  read -e -p "Enter the public URLv4 to this LG (including http://) [${URL}]: " -i "$URLV4" UV4
-  read -e -p "Enter the public URLv6 to this LG (including http://) [${URL}]: " -i "$URLV6" UV6
+  read -e -p "Enter the public URLv4 to this LG (including http://) [${URLV4}]: " -i "$URLV4" UV4
+  read -e -p "Enter the public URLv6 to this LG (including http://) [${URLV6}]: " -i "$URLV6" UV6
   read -e -p "Enter the servers location [${LOCATION}]: " LOC
   read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IP4" IP4
   read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
