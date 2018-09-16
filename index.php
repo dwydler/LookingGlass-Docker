@@ -50,8 +50,8 @@ if (file_exists('LookingGlass/Config.php')) {
 							Network information
 							<?
 							echo " ( ";
-							if (!empty ($siteUrlv4)) { echo "<a href=\"".$siteUrlv4.""\">IPv4</a>";
-							if (!empty ($siteUrlv6)) { echo "<a href=\"".$siteUrlv6.""\">IPv6</a>";
+							if (!empty ($siteUrlv4)) { echo "<a href=\"".$siteUrlv4."\">IPv4</a>";
+							if (!empty ($siteUrlv6)) { echo "<a href=\"".$siteUrlv6."\">IPv6</a>";
 							echo " ) ";
 							?>
 						</div>
