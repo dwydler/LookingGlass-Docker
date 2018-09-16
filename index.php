@@ -48,7 +48,7 @@ if (isset($_GET["lang"])) {
 			<div class="row" id="header">
 				<div class="col-xs-12">
 					<div class="page-header">
-						<h1><a id="title" href="<?php echo $siteUrl; ?>"><?php echo $siteName; ?></a></h1>
+						<h1><a id="title" href="<?php echo $siteUrl; ?>"?lang=<?php echo $_GET['lang'];?>><?php echo $siteName; ?></a></h1>
 					</div>
 				</div>
 			</div>
