@@ -48,7 +48,7 @@ if (file_exists('LookingGlass/Config.php')) {
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<?
-							echo _("Network information");
+							echo _("Network information")." ";
 							
 							if ( (!empty($siteUrlv4)) &&  (!empty($siteUrlv6)) ) {
 								echo "( <a href=\"".$siteUrl."\">"._("DualStack")."</a> | 
