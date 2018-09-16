@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-16 14:55+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: index.php:51
+msgid "Network information"
+msgstr ""
+
+#: index.php:54
+msgid "DualStack"
+msgstr ""
+
+#: index.php:55
+msgid "Only IPv4"
+msgstr ""
+
+#: index.php:56
+msgid "Only IPv6"
+msgstr ""
+
+#: index.php:62
+msgid "Server Location"
+msgstr ""
+
+#: index.php:63
+msgid "IPv4 Address"
+msgstr ""
+
+#: index.php:64
+msgid "IPv6 Address"
+msgstr ""
+
+#: index.php:65
+msgid "Your IP Address"
+msgstr ""
+
+#: index.php:71
+msgid "Network Test Files"
+msgstr ""
+
+#: index.php:73
+msgid "IPv4 Download Test"
+msgstr ""
+
+#: index.php:86
+msgid "IPv6 Download Test"
+msgstr ""
+
+#: index.php:106
+msgid "Network tests"
+msgstr ""
+
+#: index.php:112
+msgid "Host or IP address"
+msgstr ""
+
+#: index.php:129
+msgid "Run Test"
+msgstr ""
+
+#: index.php:141
+msgid "Results"
+msgstr ""
+
+#: index.php:152
+msgid "Back to top"
+msgstr ""
+
+#: index.php:154
+msgid "Powered by"
+msgstr ""
+
+#: index.php:154
+msgid "Modified by"
+msgstr ""
