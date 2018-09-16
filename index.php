@@ -48,12 +48,12 @@ if (file_exists('LookingGlass/Config.php')) {
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							Network information
-							<?
+							<!--<?
 							echo " ( ";
 							if (!empty ($siteUrlv4)) { echo "<a href=\"".$siteUrlv4."\">IPv4</a>";
 							if (!empty ($siteUrlv6)) { echo "<a href=\"".$siteUrlv6."\">IPv6</a>";
 							echo " ) ";
-							?>
+							?>-->
 						</div>
 						<div class="panel-body">
 							<p>Server Location: <strong><?php echo $serverLocation; ?></strong></p>
