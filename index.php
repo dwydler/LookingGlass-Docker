@@ -37,7 +37,7 @@ if (file_exists('LookingGlass/Config.php')) {
 			<div class="row" id="header">
 				<div class="col-xs-12">
 					<div class="page-header">
-						<h1><a id="title" href="http://<?php echo $siteUrl; ?>"><?php echo $siteName; ?></a></h1>
+						<h1><a id="title" href="<?php echo $siteUrl; ?>"><?php echo $siteName; ?></a></h1>
 					</div>
 				</div>
 			</div>
@@ -46,7 +46,15 @@ if (file_exists('LookingGlass/Config.php')) {
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">Network information</div>
+						<div class="panel-heading">
+							Network information
+							<?
+							echo " ( ";
+							if (!empty ($siteUrlv4)) { echo "<a href=\"".$siteUrlv4.""\">IPv4</a>";
+							if (!empty ($siteUrlv6)) { echo "<a href=\"".$siteUrlv6.""\">IPv6</a>";
+							echo " ) ";
+							?>
+						</div>
 						<div class="panel-body">
 							<p>Server Location: <strong><?php echo $serverLocation; ?></strong></p>
 							<p>IPv4 Address: <?php echo $ipv4; ?></p>
