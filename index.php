@@ -72,7 +72,7 @@ if (file_exists('LookingGlass/Config.php')) {
 								foreach ($testFiles as $val) 
 									{
 									echo "<a href=\"";
-									if ( !empty($siteUrlv4) { echo $siteUrlv4; }
+									if ( !empty($siteUrlv4)) { echo $siteUrlv4; }
 									else  { echo $siteUrl; }
 									echo "/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
 									}
