@@ -77,12 +77,16 @@ if (file_exists('LookingGlass/Config.php')) {
 									echo "/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
 									}
 							?>
-							<?php if (!empty($ipv6)) 
+							<?php
+							if (!empty($ipv6)) 
 								{
 								echo "<h4>IPv6 Download Test</h4>";
 								foreach ($testFiles as $val) 
 									{
-									echo "<a href=\"//ipv6.{$siteUrl}/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
+									echo "<a href=\"";
+									if ( !empty($siteUrlv6)) { echo $siteUrlv6; }
+									else  { echo $siteUrl; }
+									echo "/{$val}.bin\" class=\"btn btn-xs btn-default\">{$val}</a> ";
 									}
 								} 
 							?>
