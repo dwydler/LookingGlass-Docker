@@ -163,7 +163,7 @@ if (isset($_GET["lang"])) {
 				<p class="pull-right">
 					<a href="#"><? echo _("Back to top"); ?></a>
 				</p
-				<p><?php echo _("Powered by")." "; ?><a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | <? echo _("Modified by")." "; ?><a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a></p>
+				<p><?php echo _("Powered by").": "; ?><a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | <? echo _("Modified by").": "; ?><a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a></p>
 			</footer>
 
 		</div>
