@@ -62,7 +62,7 @@ if (isset($_GET["lang"])) {
 							echo _("Network information")." ";
 							
 							if ( (!empty($siteUrlv4)) &&  (!empty($siteUrlv6)) ) {
-								echo "( <a href=\"".$siteUrl."\">"._("DualStack")."</a> | 
+								echo "( <a href=\"".$siteUrl."?lang=".$_GET['lang']."\">"._("DualStack")."</a> | 
 								        <a href=\"".$siteUrlv4."?lang=".$_GET['lang']."\">"._("Only IPv4")."</a> |
 										<a href=\"".$siteUrlv6."?lang=".$_GET['lang']."\">"._("Only IPv6")."</a> )";
 							}
