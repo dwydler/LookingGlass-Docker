@@ -20,8 +20,8 @@ if (isset($_GET["lang"])) {
 }
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -171,8 +171,8 @@ if (isset($_GET["lang"])) {
 
 		</div>
 
-		<script type="text/javascript" src="assets/js/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="assets/js/LookingGlass.min.js"></script>
-		<script type="text/javascript" src="assets/js/XMLHttpRequest.min.js"></script>
+		<script src="assets/js/jquery-1.12.4.min.js"></script>
+		<script src="assets/js/LookingGlass.min.js"></script>
+		<script src="assets/js/XMLHttpRequest.min.js"></script>
 	</body>
 </html>
