@@ -1,19 +1,31 @@
 <?php
 // lazy config check/load
 if (file_exists('LookingGlass/Config.php')) {
-  require 'LookingGlass/Config.php';
-  if (!isset($ipv4, $ipv6, $siteName, $siteUrl, $serverLocation, $testFiles, $theme)) {
-    exit('Configuration variable/s missing. Please run configure.sh');
-  }
-} else {
-  exit('Config.php does not exist. Please run configure.sh');
+	require 'LookingGlass/Config.php';
+	
+	if (!isset($ipv4, $ipv6, $siteName, $siteUrl, $serverLocation, $testFiles, $theme)) {
+		exit('Configuration variable/s missing. Please run configure.sh');
+	}
 }
+else {
+	exit('Config.php does not exist. Please run configure.sh');
+}
+
+// include multi  language sytem
+if (isset($_GET["lang"])) {
+	$locale = $_GET["lang"];
+	setlocale(LC_MESSAGES, $locale)
+	bindtextdomain("messages", "./locale");
+	textdomain("messages");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="LookingGlass - Open source PHP looking glass">
 		<meta name="author" content="Telephone">
