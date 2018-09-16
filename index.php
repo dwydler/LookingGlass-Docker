@@ -165,7 +165,7 @@ if (isset($_GET["lang"])) {
 				<p>
 				<?php echo _("Powered by").": "; ?><a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | 
 				<?php echo _("Modified by").": "; ?><a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a> | 
-				<?php echo _("Language").": "; ?> <a href="?lang=en_Us">EN</a> <a href="?lang=de_DE">DE</a>
+				<?php echo _("Language").": "; ?> <a href="?lang=en_US">EN</a> <a href="?lang=de_DE">DE</a>
 				</p>
 			</footer>
 
