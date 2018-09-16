@@ -23,11 +23,11 @@ if (isset($_GET["lang"])) {
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="LookingGlass - Open source PHP looking glass">
-		<meta name="author" content="Telephone">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="LookingGlass - Open source PHP looking glass" />
+		<meta name="author" content="Telephone" />
 		
 		<title><?php echo $siteName; ?> - Looking Glass</title>
 
