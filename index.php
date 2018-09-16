@@ -37,7 +37,7 @@ if (isset($_GET["lang"])) {
 		<![endif]-->
 
 		<!-- Styles -->
-		<link href="assets/css/<?php echo $theme; ?>" rel="stylesheet">
+		<link href="assets/css/<?php echo $theme; ?>" rel="stylesheet" />
 	</head>
   
 	<body>
@@ -120,7 +120,7 @@ if (isset($_GET["lang"])) {
 							
 								<div id="hosterror" class="form-group">
 									<div class="controls">
-										<input id="host" name="host" type="text" class="form-control" placeholder="<? echo _("Host or IP address"); ?>">
+										<input id="host" name="host" type="text" class="form-control" placeholder="<? echo _("Host or IP address"); ?>" />
 									</div>
 								</div>
 								<div class="form-group">
