@@ -14,7 +14,7 @@ else {
 // include multi  language sytem
 if (isset($_GET["lang"])) {
 	$locale = $_GET["lang"];
-	setlocale(LC_MESSAGES, $locale)
+	setlocale(LC_MESSAGES, $locale);
 	bindtextdomain("messages", "./locale");
 	textdomain("messages");
 }
