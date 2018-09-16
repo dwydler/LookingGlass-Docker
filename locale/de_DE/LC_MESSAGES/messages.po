@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-16 14:55+0200\n"
-"PO-Revision-Date: 2018-09-16 15:53+0200\n"
+"PO-Revision-Date: 2018-09-16 15:54+0200\n"
 "Last-Translator: Daniel Wydler <EMAIL@ADDRESS>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -87,7 +87,7 @@ msgstr "Entwickelt von"
 
 #: index.php:168
 msgid "Modified by"
-msgstr "Geaendert durc"
+msgstr "Geändert durch"
 
 #: index.php:169
 msgid "Language"
