@@ -47,27 +47,30 @@ if (file_exists('LookingGlass/Config.php')) {
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							Network information
-							<?php
+							<?
+							echo _("Network information");
+							
 							if ( (!empty($siteUrlv4)) &&  (!empty($siteUrlv6)) ) {
-								echo "( <a href=\"".$siteUrl."\">DualStack</a> | <a href=\"".$siteUrlv4."\">Only IPv4</a> | <a href=\"".$siteUrlv6."\">Only IPv6</a> )";
+								echo "( <a href=\"".$siteUrl."\">"._("DualStack")."</a> | 
+								        <a href=\"".$siteUrlv4."\">"._("Only IPv4")."</a> |
+										<a href=\"".$siteUrlv6."\">"._("Only IPv6")."</a> )";
 							}
 							?>
 							
 						</div>
 						<div class="panel-body">
-							<p>Server Location: <strong><?php echo $serverLocation; ?></strong></p>
-							<p>IPv4 Address: <?php echo $ipv4; ?></p>
-							<?php if (!empty($ipv6)) { echo '<p>IPv6 Address: '; echo $ipv6; echo '</p>'; } ?>
-							<p>Your IP Address: <strong><a href="#tests" id="userip"><?php echo $_SERVER['REMOTE_ADDR']; ?></a></strong></p>
+							<p><?php echo _("Server Location"); ?>: <strong><?php echo $serverLocation; ?></strong></p>
+							<p><?php echo _("IPv4 Address").": ".$ipv4; ?></p>
+							<?php if (!empty($ipv6)) { echo "<p>"._("IPv6 Address").": ".$ipv6."</p>"; } ?>
+							<p><?php echo _("Your IP Address"); ?>: <strong><a href="#tests" id="userip"><?php echo $_SERVER['REMOTE_ADDR']; ?></a></strong></p>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">Network Test Files</div>
+						<div class="panel-heading"><?php echo _("Network Test Files"); ?></div>
 						<div class="panel-body">
-							<h4>IPv4 Download Test</h4>
+							<h4><? echo _("IPv4 Download Test"); ?></h4>
 							<?php
 								foreach ($testFiles as $val) 
 									{
@@ -80,7 +83,7 @@ if (file_exists('LookingGlass/Config.php')) {
 							<?php
 							if (!empty($ipv6)) 
 								{
-								echo "<h4>IPv6 Download Test</h4>";
+								echo "<h4>"._("IPv6 Download Test")."</h4>";
 								foreach ($testFiles as $val) 
 									{
 									echo "<a href=\"";
@@ -100,13 +103,13 @@ if (file_exists('LookingGlass/Config.php')) {
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">Network tests</div>
+						<div class="panel-heading"><?php echo _("Network tests"); ?></div>
 						<div class="panel-body">
 							<form class="form-inline" id="networktest" action="#results" method="post">
 							
 								<div id="hosterror" class="form-group">
 									<div class="controls">
-										<input id="host" name="host" type="text" class="form-control" placeholder="Host or IP address">
+										<input id="host" name="host" type="text" class="form-control" placeholder="<? echo _("Host or IP address"); ?>">
 									</div>
 								</div>
 								<div class="form-group">
@@ -123,7 +126,7 @@ if (file_exists('LookingGlass/Config.php')) {
 									</select>
 								</div>
 						
-								<button type="submit" id="submit" name="submit" class="btn btn-success">Run Test</button>
+								<button type="submit" id="submit" name="submit" class="btn btn-success"><?php echo _("Run Test"); ?></button>
 							</form>
 						</div>
 					</div>
@@ -135,7 +138,7 @@ if (file_exists('LookingGlass/Config.php')) {
 			<div class="row" id="results" style="display:none">
 				<div class="col-xs-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">Results</div>
+						<div class="panel-heading"><? echo _("Results"); ?></div>
 						<div class="panel-body">
 						
 							<pre id="response" style="display:none"></pre>
@@ -146,9 +149,9 @@ if (file_exists('LookingGlass/Config.php')) {
 		  
 			<footer class="footer">
 				<p class="pull-right">
-					<a href="#">Back to top</a>
+					<a href="#"><? echo _("Back to top"); ?></a>
 				</p
-				<p>Powered by <a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | Modified by <a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a></p>
+				<p><?php echo _("Powered by")." "; ?><a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | <? echo _("Modified by")." "; ?><a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a></p>
 			</footer>
 
 		</div>
