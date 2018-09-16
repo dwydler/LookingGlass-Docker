@@ -161,7 +161,7 @@ if (isset($_GET["lang"])) {
 			<footer class="footer">
 				<p class="pull-right">
 					<a href="#"><? echo _("Back to top"); ?></a>
-				</p
+				</p>
 				<p>
 				<?php echo _("Powered by").": "; ?><a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | 
 				<?php echo _("Modified by").": "; ?><a target="_blank" href="https://github.com/StadtBadWurzach/LookingGlass">Stadt Bad Wurzach</a> | 
