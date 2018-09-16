@@ -46,7 +46,15 @@ if (file_exists('LookingGlass/Config.php')) {
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="panel panel-default">
-						<div class="panel-heading">Network information</div>
+						<div class="panel-heading">
+							Network information
+							<?php
+							if ( (!empty($siteUrlv4)) &&  (!empty($siteUrlv6)) ) {
+								echo "( <a href=\"".$siteUrl."\">DualStack</a> | ";
+							}
+							?>
+							
+						</div>
 						<div class="panel-body">
 							<p>Server Location: <strong><?php echo $serverLocation; ?></strong></p>
 							<p>IPv4 Address: <?php echo $ipv4; ?></p>
