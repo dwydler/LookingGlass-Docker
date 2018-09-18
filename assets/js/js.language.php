@@ -1,5 +1,5 @@
+word_hello = "<?php echo _("Loading"); ?>"
 RunTest = "<?php echo _("Run Test"); ?>"
-Loading = "<?php echo _("Loading"); ?>"
 
-document.write(RunTest);
+document.write(word_hello);
 document.write(Loading);
