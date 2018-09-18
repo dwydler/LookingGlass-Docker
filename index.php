@@ -45,9 +45,11 @@ if (isset($_GET["lang"])) {
 		catch(e){window.attachEvent("onload", $buo_f)}
 		</script>
 		
+		<script>
 		RunTest = "<?php echo _("Run Test"); ?>"
 		Loading = "<?php echo _("Loading"); ?>"
-
+		</script>
+		
 		<!-- Styles -->
 		<link href="assets/css/<?php echo $theme; ?>" rel="stylesheet" />
 	</head>
