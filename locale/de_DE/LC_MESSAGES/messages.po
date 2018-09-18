@@ -75,6 +75,10 @@ msgstr "Host- oder IP-Adresse"
 msgid "Run Test"
 msgstr "Test starten"
 
+#: index.php:129
+msgid "Loading"
+msgstr "Wird geladen"
+
 #: index.php:141
 msgid "Results"
 msgstr "Ergebnisse"
