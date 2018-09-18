@@ -31,6 +31,7 @@ if (isset($_GET["lang"])) {
 		
 		<title><?php echo $siteName; ?> - Looking Glass</title>
 
+		<!-- Browser-Update.org -->
 		<script> 
 		var $buoop = {required:{e:-4,f:-3,o:-3,s:-1,c:-3},insecure:true,unsupported:true,api:2018.09 }; 
 		
