@@ -45,11 +45,6 @@ if (isset($_GET["lang"])) {
 		catch(e){window.attachEvent("onload", $buo_f)}
 		</script>
 		
-		<script>
-		RunTest = "<?php echo _("Run Test"); ?>"
-		Loading = "<?php echo _("Loading"); ?>"
-		</script>
-		
 		<!-- Styles -->
 		<link href="assets/css/<?php echo $theme; ?>" rel="stylesheet" />
 	</head>
@@ -186,6 +181,7 @@ if (isset($_GET["lang"])) {
 		</div>
 
 		
+		<script src="assets/js/js.language.php"></script>
 		<script src="assets/js/jquery-1.12.4.min.js"></script>
 		<script src="assets/js/LookingGlass.min.js"></script>
 		<script src="assets/js/XMLHttpRequest.min.js"></script>
