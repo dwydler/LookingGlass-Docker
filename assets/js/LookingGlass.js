@@ -18,7 +18,7 @@ $(document).ready(function() {
     // submit form
     else {
       // disable submit button + blank response
-      $('#submit').attr('disabled', 'true').text(Loading);
+      $('#submit').attr('disabled', 'true').text(Loading + '...');
       $('#response').html();
 
       // call async request
