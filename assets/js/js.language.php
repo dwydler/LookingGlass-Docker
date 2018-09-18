@@ -1,5 +1,7 @@
-word_hello = "<?php echo _("Loading"); ?>"
-RunTest = "<?php echo _("Run Test"); ?>"
+var RunTest = "<?php echo _("Run Test"); ?>"
+var Loading = "<?php echo _("Loading"); ?>"
 
-document.write(word_hello);
+document.write(RunTest);
 document.write(Loading);
+ 
+ 
