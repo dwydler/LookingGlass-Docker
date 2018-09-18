@@ -12,7 +12,7 @@ else {
 }
 
 // include multi  language sytem
-if ( (isset($_GET["lang"])) and (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang")) ) {
+if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"])) ) {
 	$locale = $_GET["lang"];
 	setlocale(LC_MESSAGES, $locale);
 	bindtextdomain("messages", "./locale");
