@@ -17,6 +17,7 @@ if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"
 	setlocale(LC_MESSAGES, $locale);
 	bindtextdomain("messages", "./locale");
 	textdomain("messages");
+	bind_textdomain_codeset("messages", 'UTF-8');
 }
 
 ?>
