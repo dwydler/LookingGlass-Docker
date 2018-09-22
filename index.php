@@ -146,6 +146,7 @@ else {
 									<select name="cmd" class="form-control">
 										<?php 
 										  if (empty($host)) { echo '<option value="host">host</option>'; }
+										  if (!empty($ipv6)) and (empty($host)) { echo '<option value="host">host6</option>'; }
 										  if (empty($mtr)) { echo '<option value="mtr">mtr</option>'; }
 										  if ( (!empty($ipv6)) and (empty($mtr)) ) { echo '<option value="mtr6">mtr6</option>'; }
 										  if (empty($ping)) { echo '<option value="ping" selected="selected">ping</option>'; }

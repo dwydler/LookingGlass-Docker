@@ -32,6 +32,14 @@ class LookingGlass
         }
         return false;
     }
+	
+	public function host6($host)
+    {
+        if ($host = $this->validate($host)) {
+            return $this->procExecute('host -6', $host);
+        }
+        return false;
+    }
 
     /**
      * Execute a 'mtr' command against given host:
