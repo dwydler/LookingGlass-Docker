@@ -39,7 +39,7 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 
 ## Install / Update
 
-1. Download [LookingGlass](https://github.com/StadtBadWurzach/LookingGlass/archive/master.zip) to the intended
+1. Download [LookingGlass](https://github.com/StadtBadWurzach/LookingGlass/archive/v1.4.0.zip) to the intended
 folder within your web directory
 2. Move archive to the correct directory
 3. Extract archive with unzip master.zip
