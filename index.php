@@ -179,7 +179,7 @@ else {
 		  
 			<footer class="footer">
 				<p class="pull-right">
-					<a href="#"><? echo _("Back to top"); ?></a>
+					<a href="#"><?php echo _("Back to top"); ?></a>
 				</p>
 				<p>
 				<?php echo _("Powered by").": "; ?><a target="_blank" href="http://github.com/telephone/LookingGlass">LookingGlass</a> | 
