@@ -89,7 +89,7 @@ else {
 							
 						</div>
 						<div class="panel-body">
-							<p><?php echo _("Server Location"); ?>: <strong><?php echo $serverLocation; ?></strong></p>
+							<p><?php echo _("Server Location"); ?>: <strong><?php echo utf8_encode($serverLocation); ?></strong></p>
 							<p><?php echo _("IPv4 Address").": ".$ipv4; ?></p>
 							<?php if (!empty($ipv6)) { echo "<p>"._("IPv6 Address").": ".$ipv6."</p>"; } ?>
 							<p><?php echo _("Your IP Address"); ?>: <strong><a href="#tests" id="userip"><?php echo $_SERVER['REMOTE_ADDR']; ?></a></strong></p>
