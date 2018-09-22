@@ -33,7 +33,7 @@ else {
 		<meta name="description" content="LookingGlass - Open source PHP looking glass" />
 		<meta name="author" content="Telephone" />
 		
-		<title><?php echo $siteName; ?> - Looking Glass</title>
+		<title><?php echo $siteName; ?></title>
 
 		<!-- Browser-Update.org -->
 		<script> 
