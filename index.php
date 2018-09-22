@@ -19,8 +19,11 @@ if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"
 	textdomain("messages");
 	bind_textdomain_codeset("messages", 'UTF-8');
 }
-
+else {
+	$locale = "en_US";
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
 	<head>
@@ -64,7 +67,7 @@ if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"
 			<div class="row" id="header">
 				<div class="col-xs-12">
 					<div class="page-header">
-						<h1><a id="title" href="<?php echo $siteUrl; ?>?lang=<?php echo $_GET['lang'];?>"><?php echo $siteName; ?></a></h1>
+						<h1><a id="title" href="<?php echo $siteUrl; ?>?lang=<?php echo $locale;?>"><?php echo $siteName; ?></a></h1>
 					</div>
 				</div>
 			</div>
@@ -78,9 +81,9 @@ if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"
 							echo _("Network information")." ";
 							
 							if ( (!empty($siteUrlv4)) &&  (!empty($siteUrlv6)) ) {
-								echo "( <a href=\"".$siteUrl."?lang=".$_GET['lang']."\">"._("DualStack")."</a> | 
-								        <a href=\"".$siteUrlv4."?lang=".$_GET['lang']."\">"._("Only IPv4")."</a> |
-										<a href=\"".$siteUrlv6."?lang=".$_GET['lang']."\">"._("Only IPv6")."</a> )";
+								echo "( <a href=\"".$siteUrl."?lang=".$locale."\">"._("DualStack")."</a> | 
+								        <a href=\"".$siteUrlv4."?lang=".$locale."\">"._("Only IPv4")."</a> |
+										<a href=\"".$siteUrlv6."?lang=".$locale."\">"._("Only IPv6")."</a> )";
 							}
 							?>
 							
