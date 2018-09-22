@@ -20,6 +20,7 @@ It's recommended that everyone updates their existing install!
 ## Implemented commands
 
 * host
+* host (IPv6)
 * mtr
 * mtr6 (IPv6)
 * ping
