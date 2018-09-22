@@ -74,7 +74,7 @@ if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"
 				<div class="col-sm-6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<?
+							<?php
 							echo _("Network information")." ";
 							
 							if ( (!empty($siteUrlv4)) &&  (!empty($siteUrlv6)) ) {
@@ -97,7 +97,7 @@ if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"
 					<div class="panel panel-default">
 						<div class="panel-heading"><?php echo _("Network Test Files"); ?></div>
 						<div class="panel-body">
-							<h4><? echo _("IPv4 Download Test"); ?></h4>
+							<h4><?php echo _("IPv4 Download Test"); ?></h4>
 							<?php
 								foreach ($testFiles as $val) 
 									{
@@ -136,7 +136,7 @@ if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"
 							
 								<div id="hosterror" class="form-group">
 									<div class="controls">
-										<input id="host" name="host" type="text" class="form-control" placeholder="<? echo _("Host or IP address"); ?>" />
+										<input id="host" name="host" type="text" class="form-control" placeholder="<?php echo _("Host or IP address"); ?>" />
 									</div>
 								</div>
 								<div class="form-group">
