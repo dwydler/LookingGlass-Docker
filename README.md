@@ -5,16 +5,17 @@
 LookingGlass is a user-friendly PHP based looking glass that allows the public (via a web interface) to execute network
 commands on behalf of your server.
 
-Current version: v1.3.0
+Current version: v1.4.0
 
 It's recommended that everyone updates their existing install!
 
 ## Features
 
 * Automated install via bash script
-* IPv4 & IPv6 support
+* IPv4 & IPv6 support (DualStack, Only IPv4 or IPv6)
+* Separate Domains for IPv4/IPv6
 * Live output via long polling
-* Multiple themes
+* Multi Language System. New Languages are Welcome!
 * Rate limiting of network commands
 
 ## Implemented commands
@@ -32,7 +33,7 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 
 ## Requirements
 
-* PHP >= 5.3
+* PHP >= 5.6
 * PHP PDO with SQLite driver (required for rate-limit)
 * SSH/Terminal access (able to install commands/functions if non-existent)
 
@@ -68,7 +69,6 @@ To enable output buffering, and disable gzip on test files please refer to the p
 The provided config is setup for LookingGlass to be on a subdomain/domain root.
 
 For an HTTPS setup please visit:
-- [Best nginx configuration for security](http://tautt.com/best-nginx-configuration-for-security/)
 - [Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
 
 ## License
