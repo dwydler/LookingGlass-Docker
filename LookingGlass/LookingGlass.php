@@ -35,7 +35,7 @@ class LookingGlass
 	
 	public function host6($host)
     {
-        if ($host = $this->validate($host)) {
+        if ($host = $this->validate($host, 6)) {
             return $this->procExecute('host -6', $host);
         }
         return false;
