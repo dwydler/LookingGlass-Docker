@@ -213,6 +213,13 @@ host mtr iputils-ping traceroute sqlite3
 EOF
 	fi
 
+	# command ifconfig
+        echo 'Checking for ifconfig...'
+        if [ ! -f "/sbin/ifconfig" ]; then
+		${INSTALLi} -y install "net-tools"
+        echo
+        fi
+
 	# command host
 	echo 'Checking for host...'
 	if [ ! -f "/usr/bin/host" ]; then
