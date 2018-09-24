@@ -6,7 +6,7 @@
   * Fix ajax.php for PHP7 environments
   * Fix extension of test files from .text to .bin for Internet Explorer
   * Added Mutli Language System.
-  * Added function host
+  * Added function host6
   * Added Browser Update check
   * Added support for DualStack, only ipv4 and only ipv6 for the site
   * Added support for seperated download url (ipv4/ipv6) for test files
