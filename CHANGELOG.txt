@@ -1,8 +1,8 @@
 * 1.4.0 (2018-09-22)
   * Fix html/css code for w3c validation
-  * Fix install/config from mtr at CentOSS/Fedora  
-  * Fix install of sqlite3 at CentOSS/Fedora 
-  * Fix external links oben in new tab/window
+  * Fix install/config from mtr at CentOS/Fedora  
+  * Fix install of sqlite3 at CentOS/Fedora 
+  * Fix external links open in new tab/window
   * Fix ajax.php for PHP7 environments
   * Fix extension of test files from .text to .bin for Internet Explorer
   * Added Mutli Language System.
