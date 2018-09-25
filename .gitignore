@@ -2,3 +2,4 @@
 LookingGlass/Config.php
 LookingGlass/ratelimit.db
 *.bin
+*.test
