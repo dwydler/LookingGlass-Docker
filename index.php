@@ -14,13 +14,13 @@ else {
 // include multi  language sytem
 if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"])) ) {
 	$locale = $_GET["lang"];
-	setlocale(LC_MESSAGES, $locale);
+	setlocale(LC_MESSAGES, [$locale, $locale.".UTF-8"]);
 	bindtextdomain("messages", "./locale");
 	textdomain("messages");
 	bind_textdomain_codeset("messages", 'UTF-8');
 }
 else {
-	$locale = "en_US";
+	$locale = "en_US.UTF-8";
 }
 ?>
 
