@@ -46,7 +46,7 @@ folder within your web directory
 4. Navigate to the `LookingGlass` subdirectory in terminal
 5. Run `bash configure.sh`
 6. Follow the instructions and `configure.sh` will take care of the rest
-	- Note: Re-enter test files to create random test files from `GNU dd`
+	- Note: Re-enter test files to create random test files from `GNU shred`
 
 _Forgot a setting? Simply run the `configure.sh` script again_
 
