@@ -194,7 +194,7 @@ else {
 			<div class="row" id="results" style="display:none">
 				<div class="col-xs-12">
 					<div class="panel panel-default">
-						<div class="panel-heading"><? echo _("Results"); ?></div>
+						<div class="panel-heading"><?php echo _("Results"); ?></div>
 						<div class="panel-body">
 						
 							<pre id="response" style="display:none"></pre>
