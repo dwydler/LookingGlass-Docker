@@ -10,42 +10,47 @@
  * @version     1.4.0
  */
 
-/**
- * NOTE:
- *   Version 1 will continue to allow direct access to ajax.php (no CSRF protection).
- *   I recommend setting a reasonable rate-limit to overcome abuse
- */
+// Start new or resume existing session
+session_start();
 
-// check whether command and host are set
-if (isset($_GET['cmd']) && isset($_GET['host'])) {
-    // define available commands
-    $cmds = array('host', 'host6', 'mtr', 'mtr6', 'ping', 'ping6', 'traceroute', 'traceroute6');
-    // verify command
-    if (in_array($_GET['cmd'], $cmds)) {
-        // include required scripts
-        $required = array('LookingGlass.php', 'RateLimit.php', 'Config.php');
-        foreach ($required as $val) {
-            require 'LookingGlass/' . $val;
-        }
+// csrf protection
+if (!empty($_GET["csrf"])) {
+	
+	// compare tboth values
+    if (hash_equals($_SESSION["csrf"], $_GET["csrf"])) {
 
-        // lazy check
-        if (!isset($rateLimit)) {
-            $rateLimit = 0;
-        }
+		// check whether command and host are set
+		if (isset($_GET['cmd']) && isset($_GET['host'])) {
+			// define available commands
+			$cmds = array('host', 'host6', 'mtr', 'mtr6', 'ping', 'ping6', 'traceroute', 'traceroute6');
+			// verify command
+			if (in_array($_GET['cmd'], $cmds)) {
+				// include required scripts
+				$required = array('LookingGlass.php', 'RateLimit.php', 'Config.php');
+				foreach ($required as $val) {
+					require 'LookingGlass/' . $val;
+				}
 
-        // instantiate LookingGlass & RateLimit
-        $lg = new Telephone\LookingGlass();
-        $limit = new Telephone\LookingGlass\RateLimit($rateLimit);
+				// lazy check
+				if (!isset($rateLimit)) {
+					$rateLimit = 0;
+				}
 
-        // check IP against database
-        $limit->rateLimit($rateLimit);
+				// instantiate LookingGlass & RateLimit
+				$lg = new Telephone\LookingGlass();
+				$limit = new Telephone\LookingGlass\RateLimit($rateLimit);
 
-        // execute command
-        $output = $lg->{$_GET['cmd']}($_GET['host']);
-        if ($output) {
-            exit();
-        }
-    }
-}
+				// check IP against database
+				$limit->rateLimit($rateLimit);
+
+				// execute command
+				$output = $lg->{$_GET['cmd']}($_GET['host']);
+				if ($output) {
+					exit();
+				}
+			}
+		}
+	} 
+ }
 // report error
-exit('Unauthorized request');
+exit('Unauthorized request!');

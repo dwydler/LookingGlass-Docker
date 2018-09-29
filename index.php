@@ -1,4 +1,27 @@
 <?php
+/**
+ * LookingGlass - User friendly PHP Looking Glass
+ *
+ * @package     LookingGlass
+ * @author      Nick Adams <nick@iamtelephone.com>
+ * @copyright   2015 Nick Adams.
+ * @link        http://iamtelephone.com
+ * @license     http://opensource.org/licenses/MIT MIT License
+ * @version     1.4.0
+ */
+ 
+// Start new or resume existing session
+session_start();
+
+// Generate a unique id
+//$_SESSION["csrf"] = bin2hex(random_bytes(32));
+if (function_exists('mcrypt_create_iv')) {
+        $_SESSION["csrf"] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+}
+else {
+        $_SESSION["csrf"] = bin2hex(openssl_random_pseudo_bytes(32));
+}
+
 // lazy config check/load
 if (file_exists('LookingGlass/Config.php')) {
 	require 'LookingGlass/Config.php';
@@ -156,7 +179,7 @@ else {
 										  ?>
 									</select>
 								</div>
-						
+								<input type="hidden" name="csrf" value="<?php echo $_SESSION["csrf"]; ?>" />
 								<button type="submit" id="submit" name="submit" class="btn btn-success"><?php echo _("Run Test"); ?></button>
 							</form>
 						</div>
@@ -193,7 +216,7 @@ else {
 
 		
 		<script src="assets/js/jquery-1.12.4.min.js"></script>
-		<script src="assets/js/LookingGlass.min.js"></script>
+		<script src="assets/js/LookingGlass.js"></script>
 		<script src="assets/js/XMLHttpRequest.min.js"></script>
 	</body>
 </html>
