@@ -14,12 +14,14 @@
 session_start();
 
 // Generate a unique id
-//$_SESSION["csrf"] = bin2hex(random_bytes(32));
-if (function_exists('mcrypt_create_iv')) {
-        $_SESSION["csrf"] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+if (PHP_MAJOR_VERSION >= 7) {
+	$_SESSION['csrf'] = bin2hex(random_bytes(32));	
+}
+else if (function_exists('mcrypt_create_iv')) {
+	$_SESSION['csrf'] = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
 }
 else {
-        $_SESSION["csrf"] = bin2hex(openssl_random_pseudo_bytes(32));
+	$_SESSION['csrf'] = bin2hex(openssl_random_pseudo_bytes(32));
 }
 
 // lazy config check/load
