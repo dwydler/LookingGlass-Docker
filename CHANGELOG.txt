@@ -1,3 +1,7 @@
+* 1.5.0 (xxxx.xx.xx)
+  * Prevent my site page to be loaded via 3rd party site (frame, iframe, object)
+  * Fix typing errors in changelog.txt
+
 * 1.4.0 (2018-09-22)
   * Fix html/css code for w3c validation
   * Fix install/config from mtr at CentOS/Fedora  
