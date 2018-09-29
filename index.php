@@ -14,7 +14,7 @@
 session_start();
 
 // Generate a unique id
-if (PHP_MAJOR_VERSION >= 7) {
+if (function_exists('random_bytes')) {
 	$_SESSION['csrf'] = bin2hex(random_bytes(32));	
 }
 else if (function_exists('mcrypt_create_iv')) {
