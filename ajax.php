@@ -16,7 +16,7 @@ session_start();
 // csrf protection
 if (!empty($_GET["csrf"])) {
 	
-	// compare tboth values
+	// compare both values
     if (hash_equals($_SESSION["csrf"], $_GET["csrf"])) {
 
 		// check whether command and host are set
