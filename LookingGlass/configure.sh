@@ -215,7 +215,7 @@ EOF
 
 	# command ifconfig
         echo 'Checking for ifconfig...'
-        if [ ! -f "/sbin/ifconfig" ] || [ ! -f "/bin/ifconfig" ] ; then
+        if [ ! -f "/sbin/ifconfig" ] && [ ! -f "/bin/ifconfig" ] ; then
 		${INSTALL} -y install "net-tools"
         echo
         fi
@@ -235,7 +235,7 @@ EOF
   
 	# command mtr
 	echo 'Checking for mtr...'
-	if [ ! -f "/usr/bin/mtr" ] || [ ! -f "/usr/sbin/mtr" ] ; then
+	if [ ! -f "/usr/bin/mtr" ] && [ ! -f "/usr/sbin/mtr" ] ; then
 		if [ $INSTALL = 'none' ]; then
 			MTR='NULL'
 		else
