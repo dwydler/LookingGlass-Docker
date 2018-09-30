@@ -215,8 +215,8 @@ EOF
 
 	# command ifconfig
         echo 'Checking for ifconfig...'
-        if [ ! -f "/sbin/ifconfig" ]; then
-		${INSTALLi} -y install "net-tools"
+        if [ ! -f "/sbin/ifconfig" ] || [ ! -f "/bin/ifconfig" ] ; then
+		${INSTALL} -y install "net-tools"
         echo
         fi
 
