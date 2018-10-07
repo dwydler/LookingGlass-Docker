@@ -24,6 +24,17 @@ else {
 	$_SESSION['csrf'] = bin2hex(openssl_random_pseudo_bytes(32));
 }
 
+// check if php pdo for sqlite installed on server
+ if( !in_array("sqlite",PDO::getAvailableDrivers()) ) {
+	
+	exit('PDO driver for SQLite is not installed on this system.');
+ }
+ 
+ //check php version
+ if (version_compare(phpversion(), '5.6.0', '<')) {
+	 exit('This PHP Version '.phpversion().' is not supportet.');
+ }
+ 
 // lazy config check/load
 if (file_exists('LookingGlass/Config.php')) {
 	require 'LookingGlass/Config.php';
@@ -35,12 +46,6 @@ if (file_exists('LookingGlass/Config.php')) {
 else {
 	exit('Config.php does not exist. Please run configure.sh.');
 }
-
-// check if php pdo for sqlite installed on server
- if( !in_array("sqlite",PDO::getAvailableDrivers()) ) {
-	
-	exit('PDO driver for SQLite is not installed on this system.');
- }
 
 
 // include multi  language sytem
