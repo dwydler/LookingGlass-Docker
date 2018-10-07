@@ -28,13 +28,20 @@ else {
 if (file_exists('LookingGlass/Config.php')) {
 	require 'LookingGlass/Config.php';
 	
-	if (!isset($ipv4, $ipv6, $siteName, $siteUrl, $serverLocation, $testFiles, $theme)) {
-		exit('Configuration variable/s missing. Please run configure.sh');
+	if (!isset($ipv4, $siteName, $siteUrl, $serverLocation, $testFiles, $theme)) {
+		exit('Configuration variable/s missing. Please run configure.sh.');
 	}
 }
 else {
-	exit('Config.php does not exist. Please run configure.sh');
+	exit('Config.php does not exist. Please run configure.sh.');
 }
+
+// check if php pdo for sqlite installed on server
+ if( !in_array("sqlite",PDO::getAvailableDrivers()) ) {
+	
+	exit('PDO driver for SQLite is not installed on this system.');
+ }
+
 
 // include multi  language sytem
 if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"])) ) {
