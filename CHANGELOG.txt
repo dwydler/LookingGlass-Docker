@@ -1,8 +1,15 @@
 * 1.5.0 (xxxx.xx.xx)
   * Prevent my site page to be loaded via 3rd party site (frame, iframe, object)
   * Fix typing errors in changelog.txt
-  * Added Content Security Policy headers. Generated with https://www.cspisawesome.com
+  * Fix logical operators in configure.sh
+  * Fix short php tags in index.php
+  * Added Content Security Policy headers to .htaccess. Generated with https://www.cspisawesome.com
   * Added Cross-Site-Request-Forgery (CSRF) for ajax.php
+  * Added Note for unsupportet php versions
+  * Added ErrorCheck for SQLite in RateLimit Class
+  * Added check for PHP PDO SQLite Drivers
+  * Added CSP for nginx example configuration
+  * Added demo link to readme.md
 
 * 1.4.0 (2018-09-22)
   * Fix html/css code for w3c validation
