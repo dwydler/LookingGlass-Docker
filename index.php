@@ -13,7 +13,7 @@
 // Start new or resume existing session
 session_start();
 
-// Generate a unique id
+// Generate a unique id for php session
 if (function_exists('random_bytes')) {
 	$_SESSION['csrf'] = bin2hex(random_bytes(32));	
 }
