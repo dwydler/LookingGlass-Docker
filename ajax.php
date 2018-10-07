@@ -31,8 +31,8 @@ if (!empty($_GET["csrf"])) {
 					require 'LookingGlass/' . $val;
 				}
 
-				// lazy check
-				if (!isset($rateLimit)) {
+				// check if variable value is an int
+				if( !preg_match("/^\d+$/",$rateLimit) ) {
 					$rateLimit = 0;
 				}
 
