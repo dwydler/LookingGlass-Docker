@@ -83,8 +83,10 @@ class RateLimit
             $q = $dbh->prepare('UPDATE RateLimit SET hits = ?, accessed = ? WHERE ip = ?');
             $q->execute(array(1, time(), $_SERVER['REMOTE_ADDR']));
         }
-
+		
+		// close database connection
         $dbh = null;
+		
         return true;
     }
 }
