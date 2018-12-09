@@ -12,7 +12,7 @@ It's recommended that everyone updates their existing install!
 ## Demo
 [Looking Glass](https://lg.wydler.eu/)
 
-Demo is running on Webspace of domainFACTORY. 
+Demo is running on a Cloud Server of Hetzner Online GmbH. 
 
 ## Features
 
