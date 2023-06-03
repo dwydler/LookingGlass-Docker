@@ -47,13 +47,13 @@ if( !function_exists("proc_get_status") ) {
 }
 
 // check if German locale is usable
-if( !setlocale(LC_ALL, 'de_DE') ) {
-        exit("Locale 'de_DE' not installed. Please run: dpkg-reconfigure locales.");
+if( !setlocale(LC_ALL, 'de_DE.utf8') ) {
+        exit("Locale 'de_DE.utf8' not installed. Please run: dpkg-reconfigure locales.");
 }
 
 // check if English (US) locale is usable
-if( !setlocale(LC_ALL, 'en_US') ) {
-        exit("Locale 'en_US' not installed. Please run: dpkg-reconfigure locales.");
+if( !setlocale(LC_ALL, 'en_US.utf8') ) {
+        exit("Locale 'en_US.utf8' not installed. Please run: dpkg-reconfigure locales.");
 }
 
 // lazy config check/load
@@ -68,7 +68,7 @@ else {
         exit('Config.php does not exist. Please run configure.sh.');
 }
 
-echo $_GET["lang"];
+
 // include multi language sytem
 if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"])) ) {
         $locale = $_GET["lang"];
