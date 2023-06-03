@@ -2,9 +2,16 @@
 # or not a browser should be allowed to render a page in a <frame>, <iframe> or <object> .
 <IfModule mod_headers.c>
         Header always set X-Frame-Options SAMEORIGIN
-		Header set Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' browser-update.org; object-src 'none'; style-src 'self' 'unsafe-inline'; img-src data:; media-src 'none'; frame-src 'none'; font-src 'self'; connect-src 'self'"
-		Header set X-Content-Security-Policy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' browser-update.org; object-src 'none'; style-src 'self' 'unsafe-inline'; img-src data:; media-src 'none'; frame-src 'none'; font-src 'noselfne'; connect-src 'self'"
-		Header set X-WebKit-CSP: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' browser-update.org; object-src 'none'; style-src 'self' 'unsafe-inline'; img-src data:; media-src 'none'; frame-src 'none'; font-src 'self'; connect-src 'self'"
+        Header set X-XSS-Protection "1; mode=block"
+        Header set X-Content-Type-Options "nosniff"
+        Header set Access-Control-Allow-Origin "*"
+		Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+		
+		
+        Header set Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' browser-update.org; style-src 'self' 'unsafe-inline'; img-src data:; connect-src 'self'"
+        Header set X-Content-Security-Policy "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' browser-update.org; style-src 'self' 'unsafe-inline'; img-src data:; connect-src 'self'"
+        Header set X-WebKit-CSP "default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' browser-update.org; style-src 'self' 'unsafe-inline'; img-src data:; connect-src 'self'"
+
 </IfModule>
 
 # Disable directory indexing
