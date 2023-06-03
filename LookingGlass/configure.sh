@@ -187,7 +187,7 @@ function requirements() {
 	sleep 1
 	
 	# Check for apt-get/yum
-	if [ -f /usr/bin/apt-get ]; then
+	if [ -f /usr/bin/apt ]; then
 		# Check for root
 		if [ $(id -u) != "0" ]; then
 			INSTALL='sudo get'
