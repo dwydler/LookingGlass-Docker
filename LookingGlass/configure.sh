@@ -77,46 +77,46 @@ EOF
 ##
 function config()
 {
-	sleep 1
-	# Check if previous config exists
-	if [ ! -f $CONFIG ]; then
-		# Create config file
-		echo 'Creating Config.php...'
-		echo ' ' > "$DIR/$CONFIG"
-	else
-		echo 'Loading Config.php...'
-	fi
+        sleep 1
+        # Check if previous config exists
+        if [ ! -f $CONFIG ]; then
+                # Create config file
+                echo 'Creating Config.php...'
+                echo ' ' > "$DIR/$CONFIG"
+        else
+                echo 'Loading Config.php...'
+        fi
 
-	sleep 1
+        sleep 1
 
-	# Read Config line by line
-	while IFS="=" read -r f1 f2 || [ -n "$f1" ]; do
-		# Read variables
-		if [ "$(echo $f1 | head -c 1)" = '$' ]; then
-			# Set Variables
-		if [ $f1 = '$ipv4' ]; then
-			IPV4="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-		elif [ $f1 = '$ipv6' ]; then
-			IPV6="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-		elif [ $f1 = '$rateLimit' ]; then
-			RATELIMIT=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-		elif [ $f1 = '$serverLocation' ]; then
-			LOCATION="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-		elif [ $f1 = '$siteName' ]; then
-			SITE=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-		elif [ $f1 = '$siteUrl' ]; then
-			URL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-		elif [ $f1 = '$siteUrlv4' ]; then
-			URLV4=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-		elif [ $f1 = '$siteUrlv6' ]; then
-			URLV6=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-		elif [ $f1 = '$sqlite3' ]; then
-			SQLITE3=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-		elif [ $f1 = '$testFiles[]' ]; then
-			TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-		elif [ $f1 = '$theme' ]; then
-			THEME="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-		fi
+        # Read Config line by line
+        while IFS="=" read -r f1 f2 || [ -n "$f1" ]; do
+                # Read variables
+                if [ "$(echo $f1 | head -c 1)" = '$' ]; then
+                        # Set Variables
+                if [ $f1 = '$ipv4' ]; then
+                        IPV4="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+                elif [ $f1 = '$ipv6' ]; then
+                        IPV6="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+                elif [ $f1 = '$rateLimit' ]; then
+                        RATELIMIT=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                elif [ $f1 = '$serverLocation' ]; then
+                        LOCATION="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+                elif [ $f1 = '$siteName' ]; then
+                        SITE=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                elif [ $f1 = '$siteUrl' ]; then
+                        URL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                elif [ $f1 = '$siteUrlv4' ]; then
+                        URLV4=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                elif [ $f1 = '$siteUrlv6' ]; then
+                        URLV6=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                elif [ $f1 = '$sqlite3' ]; then
+                        SQLITE3=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                elif [ $f1 = '$testFiles[]' ]; then
+                        TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                elif [ $f1 = '$theme' ]; then
+                        THEME="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+                fi
     fi
   done < "$DIR/$CONFIG"
 }
@@ -161,14 +161,14 @@ EOF
 ##
 function mtrFix()
 {
-	# Check permissions for MTR & Symbolic link
-	if [ $(stat --format="%a" /usr/sbin/mtr) -ne 4755 ] || [ ! -f "/usr/bin/mtr" ]; then
-		if [ $(id -u) = "0" ]; then
-			echo 'Fixing MTR permissions...'
-			chmod 4755 /usr/sbin/mtr
-			ln -s /usr/sbin/mtr /usr/bin/mtr
-		else
-			cat <<EOF
+        # Check permissions for MTR & Symbolic link
+        if [ $(stat --format="%a" /usr/sbin/mtr) -ne 4755 ] || [ ! -f "/usr/bin/mtr" ]; then
+                if [ $(id -u) = "0" ]; then
+                        echo 'Fixing MTR permissions...'
+                        chmod 4755 /usr/sbin/mtr
+                        ln -s /usr/sbin/mtr /usr/bin/mtr
+                else
+                        cat <<EOF
 
 ##### IMPORTANT #####
 You are not root. Please log into root and run:
@@ -176,108 +176,116 @@ chmod 4755 /usr/sbin/mtr
 ln -s /usr/sbin/mtr /usr/bin/mtr
 #####################
 EOF
-		fi
-	fi
+                fi
+        fi
 }
 
 ##
 # Check and install script requirements
 ##
 function requirements() {
-	sleep 1
-	
-	# Check for apt-get/yum
-	if [ -f /usr/bin/apt ]; then
-		# Check for root
-		if [ $(id -u) != "0" ]; then
-			INSTALL='sudo apt'
-		else
-			INSTALL='apt'
-		fi
-	elif [ -f /usr/bin/yum ]; then
-		# Check for root
-		if [ $(id -u) != "0" ]; then
-			INSTALL='sudo yum'
-		else
-			INSTALL='yum'
-		fi
-	else
-		INSTALL='none'
-		
-		cat <<EOF
+        sleep 1
+
+        # Check for apt-get/yum
+        if [ -f /usr/bin/apt ]; then
+                # Check for root
+                if [ $(id -u) != "0" ]; then
+                        INSTALL='sudo apt'
+                else
+                        INSTALL='apt'
+                fi
+        elif [ -f /usr/bin/yum ]; then
+                # Check for root
+                if [ $(id -u) != "0" ]; then
+                        INSTALL='sudo yum'
+                else
+                        INSTALL='yum'
+                fi
+        else
+                INSTALL='none'
+
+                cat <<EOF
 
 ##### IMPORTANT #####
 Unknown Operating system. Install dependencies manually:
 host mtr iputils-ping traceroute sqlite3
 #####################
 EOF
-	fi
+        fi
 
-	# command ifconfig
+        # command ifconfig
         echo 'Checking for ifconfig...'
         if [ ! -f "/sbin/ifconfig" ] && [ ! -f "/bin/ifconfig" ] ; then
-		${INSTALL} -y install "net-tools"
+                echo "Please install: ${INSTALL} -y install net-tools."
+                exit
         echo
         fi
 
-	# command host
-	echo 'Checking for host...'
-	if [ ! -f "/usr/bin/host" ]; then
-		if [ $INSTALL = 'none' ]; then
-			HOST='NULL'
-		elif [ $INSTALL = 'yum' ]; then
-			${INSTALL} -y install "bind-utils"
-        else
-			${INSTALL} -y install "host"
+        # command host
+        echo 'Checking for host...'
+        if [ ! -f "/usr/bin/host" ]; then
+                if [ $INSTALL = 'none' ]; then
+                        HOST='NULL'
+                elif [ $INSTALL = 'yum' ]; then
+                        echo "Please install: ${INSTALL} -y install bind-utils."
+                        exit
+                else
+                        echo "Please install: ${INSTALL} -y install host."
+                        exit
+                fi
+        echo
         fi
+
+        # command mtr
+        echo 'Checking for mtr...'
+        if [ ! -f "/usr/bin/mtr" ] && [ ! -f "/usr/sbin/mtr" ] ; then
+                if [ $INSTALL = 'none' ]; then
+                        MTR='NULL'
+                else
+                        echo "Please install: ${INSTALL} -y install mtr."
+                        exit
+                fi
         echo
-	fi
-  
-	# command mtr
-	echo 'Checking for mtr...'
-	if [ ! -f "/usr/bin/mtr" ] && [ ! -f "/usr/sbin/mtr" ] ; then
-		if [ $INSTALL = 'none' ]; then
-			MTR='NULL'
-		else
-			${INSTALL} -y install "mtr"
-		fi
-        echo
-	fi
-  
-	# command ping
-	echo 'Checking for ping...'
-	if [ ! -f "/bin/ping" ]; then
-		if [ $INSTALL = 'none' ]; then
-			PING='NULL'
-		else
-			${INSTALL} -y install "iputils-ping"
         fi
-		echo
-	fi
-	
-	# command traceroute
-	echo 'Checking for traceroute...'
-	if [ ! -f "/usr/bin/traceroute" ] && [ ! -f "/usr/sbin/traceroute" ]; then
-		if [ $INSTALL = 'none' ]; then
-			TRACEROUTE='NULL'
-		else
-			${INSTALL} -y install "traceroute"
-		fi
+
+        # command ping
+        echo 'Checking for ping...'
+        if [ ! -f "/bin/ping" ]; then
+                if [ $INSTALL = 'none' ]; then
+                        PING='NULL'
+                else
+                        echo "Please install: ${INSTALL} -y install iputils-ping."
+                        exit
+                fi
         echo
-	fi
-	
-	# command sqlite3
-	echo 'Checking for sqlite3...'
-	if [ ! -f "/usr/bin/sqlite3" ]; then
-		if [ $INSTALL = 'none' ]; then
-			SQLITE3='NULL'
-		elif [ $INSTALL = 'yum' ]; then
-			${INSTALL} -y install "sqlite-devel"
-        else
-			${INSTALL} -y install "sqlite3"
         fi
+
+        # command traceroute
+        echo 'Checking for traceroute...'
+        if [ ! -f "/usr/bin/traceroute" ] && [ ! -f "/usr/sbin/traceroute" ]; then
+                if [ "$INSTALL" = "none" ]; then
+                        TRACEROUTE='NULL'
+                else
+                        echo "Please install: ${INSTALL} -y install traceroute."
+                        exit
+                fi
         echo
-	fi
+        fi
+
+        # command sqlite3
+        echo 'Checking for sqlite3...'
+        if [ ! -f "/usr/bin/sqlite3" ]; then
+                if [ "$INSTALL" = "none" ]; then
+                        SQLITE3='NULL'
+                elif [ "$INSTALL" = "yum" ]; then
+                        echo "Please install: ${INSTALL} -y install sqlite-devel."
+                        exit
+                else
+                        echo "Please install: ${INSTALL} -y install sqlite3."
+                        exit
+                fi
+        echo
+        fi
 }
 
 ##
@@ -305,7 +313,7 @@ function setup()
   read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
   read -e -p "Enter the size of test files in MB (Example: 25MB 50MB 100MB) [${TEST[*]}]: " T
   if [ -z $SQLITE3 ]; then
-	read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$RATELIMIT" RATE
+        read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$RATELIMIT" RATE
   fi
 
   # Check local vars aren't empty; Set new values
@@ -375,7 +383,7 @@ function testFiles()
   for i in "${TEST[@]}"; do
     if [[ -n i ]] && [ ! -f "../${i}.bin" ]; then
       echo "Creating $i test file"
-	  shred --exact --iterations=1 --size="${i}" - > "../${i}.bin"
+          shred --exact --iterations=1 --size="${i}" - > "../${i}.bin"
       A=$((A+1))
       sleep 1
     fi
@@ -537,7 +545,7 @@ createConfig
 
 # Create DB
 if [ -z $SQLITE3 ]; then
-	database
+        database
 fi
 
 # Check for RHEL mtr
