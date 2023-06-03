@@ -41,6 +41,7 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 * PHP >= 5.6
 * PHP PDO with SQLite driver (required for rate-limit)
 * SSH/Terminal access (able to install commands/functions if non-existent)
+* Make sure the PHP function proc_open is usable
 
 ## Install / Update
 
