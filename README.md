@@ -43,13 +43,11 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 
 ## Install / Update
 
-1. Download [LookingGlass](https://github.com/dwydler/LookingGlass/archive/v1.4.0.zip) to the intended
-folder within your web directory
+1. Clone the repository to the intended folder within your web directory
 2. Move archive to the correct directory
-3. Extract archive with unzip LookingGlass-1.4.0.zip
-4. Navigate to the `LookingGlass` subdirectory in terminal
-5. Run `bash configure.sh`
-6. Follow the instructions and `configure.sh` will take care of the rest
+3. Navigate to the `LookingGlass` subdirectory in terminal
+4. Run `bash configure.sh`
+5. Follow the instructions and `configure.sh` will take care of the rest
 	- Note: Re-enter test files to create random test files from `GNU shred`
 
 _Forgot a setting? Simply run the `configure.sh` script again_
