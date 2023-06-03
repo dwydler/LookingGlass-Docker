@@ -142,7 +142,7 @@ else {
                                                         ?>
 
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body" style="height: 200px;">
                                                         <p><?php echo _("Server Location"); ?>: <strong><?php echo $serverLocation; ?></strong></p>
                                                         <p><?php echo _("IPv4 Address").": ".$ipv4; ?></p>
                                                         <?php if (!empty($ipv6)) { echo "<p>"._("IPv6 Address").": ".$ipv6."</p>"; } ?>
@@ -153,7 +153,7 @@ else {
                                 <div class="col-md-6 mt-2 mb-3">
                                         <div class="card">
                                                 <div class="card-header"><?php echo _("Network Test Files"); ?></div>
-                                                <div class="card-body">
+                                                <div class="card-body" style="height: 200px;">
                                                         <h4><?php echo _("IPv4 Download Test"); ?></h4>
                                                         <?php
                                                                 foreach ($testFiles as $val)
