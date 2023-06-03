@@ -187,7 +187,7 @@ else {
                                                                                 </div>
                                                                         </div>
                                                                         <div class="form-group mr-1 col">
-                                                                                <select name="cmd" class="form-select" style="width:auto;">
+                                                                                <select name="cmd" class="form-select">
                                                                                         <?php
                                                                                         if (empty($host)) { echo '<option value="host">host</option>'; }
                                                                                         if ( (!empty($ipv6)) and (empty($host)) ) { echo '<option value="host6">host6</option>'; }
