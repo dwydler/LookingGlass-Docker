@@ -235,7 +235,7 @@ else {
 		</div>
 
 		
-		<script src="assets/js/jquery-1.12.4.min.js"></script>
+		<script src="assets/js/jquery-3.7.0.min.js"></script>
 		<script src="assets/js/LookingGlass.js"></script>
 		<script src="assets/js/XMLHttpRequest.min.js"></script>
 	</body>
