@@ -34,9 +34,14 @@ else {
 // check if php pdo for sqlite installed on server
 if( !in_array("sqlite",PDO::getAvailableDrivers()) ) {
 	
-	exit('PDO driver for SQLite is not installed on this system (e.g. apt install php-sqlite3');
+	exit('PDO driver for SQLite is not installed on this system (e.g. apt install php-sqlite3.');
 }
  
+// check if php function proc_open is usable
+if( !function_exists("proc_open") ) {
+
+	exit('The PHP function proc_open is not usable. Please modify your php.ini.');
+}
  
 // lazy config check/load
 if (file_exists('LookingGlass/Config.php')) {
