@@ -180,28 +180,31 @@ else {
                                                 <div class="card-header"><?php echo _("Network tests"); ?></div>
                                                 <div class="card-body">
                                                         <form class="form-inline" id="networktest" action="#results" method="post">
-
-                                                                <div id="hosterror" class="form-group">
-                                                                        <div class="controls mr-1">
-                                                                                <input id="host" name="host" type="text" class="form-control" placeholder="<?php echo _("Host or IP address"); ?>" />
+                                                                <div class="row">
+                                                                        <div id="hosterror" class="form-group col">
+                                                                                <div class="controls mr-1">
+                                                                                        <input id="host" name="host" type="text" class="form-control" placeholder="<?php echo _("Host or IP address"); ?>" />
+                                                                                </div>
+                                                                        </div>
+                                                                        <div class="form-group mr-1 col">
+                                                                                <select name="cmd" class="form-select">
+                                                                                        <?php
+                                                                                        if (empty($host)) { echo '<option value="host">host</option>'; }
+                                                                                        if ( (!empty($ipv6)) and (empty($host)) ) { echo '<option value="host6">host6</option>'; }
+                                                                                        if (empty($mtr)) { echo '<option value="mtr">mtr</option>'; }
+                                                                                        if ( (!empty($ipv6)) and (empty($mtr)) ) { echo '<option value="mtr6">mtr6</option>'; }
+                                                                                        if (empty($ping)) { echo '<option value="ping" selected="selected">ping</option>'; }
+                                                                                        if ( (!empty($ipv6)) and (empty($ping)) ) { echo '<option value="ping6">ping6</option>'; }
+                                                                                        if (empty($traceroute)) { echo '<option value="traceroute">traceroute</option>'; }
+                                                                                        if ( (!empty($ipv6)) and (empty($traceroute)) ) { echo '<option value="traceroute6">traceroute6</option>'; }
+                                                                                        ?>
+                                                                                </select>
+                                                                        </div>
+                                                                        <input type="hidden" name="csrf" value="<?php echo $_SESSION["csrf"]; ?>" />
+                                                                        <div class="col">
+                                                                                <button type="submit" id="submit" name="submit" class="btn btn-success"><?php echo _("Run Test"); ?></button>
                                                                         </div>
                                                                 </div>
-                                                                <div class="form-group mr-1">
-                                                                        <select name="cmd" class="form-control">
-                                                                                <?php
-                                                                                  if (empty($host)) { echo '<option value="host">host</option>'; }
-                                                                                  if ( (!empty($ipv6)) and (empty($host)) ) { echo '<option value="host6">host6</option>'; }
-                                                                                  if (empty($mtr)) { echo '<option value="mtr">mtr</option>'; }
-                                                                                  if ( (!empty($ipv6)) and (empty($mtr)) ) { echo '<option value="mtr6">mtr6</option>'; }
-                                                                                  if (empty($ping)) { echo '<option value="ping" selected="selected">ping</option>'; }
-                                                                                  if ( (!empty($ipv6)) and (empty($ping)) ) { echo '<option value="ping6">ping6</option>'; }
-                                                                                  if (empty($traceroute)) { echo '<option value="traceroute">traceroute</option>'; }
-                                                                                  if ( (!empty($ipv6)) and (empty($traceroute)) ) { echo '<option value="traceroute6">traceroute6</option>'; }
-                                                                                  ?>
-                                                                        </select>
-                                                                </div>
-                                                                <input type="hidden" name="csrf" value="<?php echo $_SESSION["csrf"]; ?>" />
-                                                                <button type="submit" id="submit" name="submit" class="btn btn-success"><?php echo _("Run Test"); ?></button>
                                                         </form>
                                                 </div>
                                         </div>
@@ -223,7 +226,7 @@ else {
                         </div>
 
                         <footer class="footer mt-2 mb-2">
-                                <p class="float-right">
+                                <p class="float-end">
                                         <a href="#"><?php echo _("Back to top"); ?></a>
                                 </p>
                                 <p>
