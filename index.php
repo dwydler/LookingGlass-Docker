@@ -25,10 +25,10 @@ else {
 }
 
 
-//check php version
- if (version_compare(phpversion(), '8.0', '<')) {
+// check php version
+if (version_compare(phpversion(), '8.0', '<')) {
         exit('This PHP Version '.phpversion().' is not supportet.');
- }
+}
 
 
 // check if php pdo for sqlite installed on server
@@ -46,6 +46,16 @@ if( !function_exists("proc_get_status") ) {
         exit('The PHP function proc_get_status is not usable. Please modify your php.ini.');
 }
 
+// check if German locale is usable
+if( !setlocale(LC_ALL, 'de_DE') ) {
+        exit("Locale 'de_DE' not installed. Please run: dpkg-reconfigure locales.");
+}
+
+// check if English (US) locale is usable
+if( !setlocale(LC_ALL, 'en_US') ) {
+        exit("Locale 'en_US' not installed. Please run: dpkg-reconfigure locales.");
+}
+
 // lazy config check/load
 if (file_exists('LookingGlass/Config.php')) {
         require 'LookingGlass/Config.php';
@@ -58,8 +68,8 @@ else {
         exit('Config.php does not exist. Please run configure.sh.');
 }
 
-
-// include multi  language sytem
+echo $_GET["lang"];
+// include multi language sytem
 if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"])) ) {
         $locale = $_GET["lang"];
         setlocale(LC_MESSAGES, [$locale, $locale.".UTF-8"]);
