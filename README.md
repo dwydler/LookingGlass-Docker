@@ -10,7 +10,7 @@ Current version: v1.4.0
 It's recommended that everyone updates their existing install!
 
 ## Demo
-[Looking Glass](https://lg.wydler.eu/)
+[Looking Glass](https://lg.daniel.wydler.eu/)
 
 Demo is running on a Cloud Server of Hetzner Online GmbH. 
 
