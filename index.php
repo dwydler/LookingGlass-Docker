@@ -34,7 +34,7 @@ else {
 // check if php pdo for sqlite installed on server
 if( !in_array("sqlite",PDO::getAvailableDrivers()) ) {
 	
-	exit('PDO driver for SQLite is not installed on this system.');
+	exit('PDO driver for SQLite is not installed on this system (e.g. apt install php-sqlite3');
 }
  
  
