@@ -26,21 +26,24 @@ else {
 
 
 //check php version
- if (version_compare(phpversion(), '8.0', '<')) {
-	 exit('This PHP Version '.phpversion().' is not supportet.');
- }
+if (version_compare(phpversion(), '8.0', '<')) {
+	exit('This PHP Version '.phpversion().' is not supportet.');
+}
  
  
 // check if php pdo for sqlite installed on server
-if( !in_array("sqlite",PDO::getAvailableDrivers()) ) {
-	
+if( !in_array("sqlite",PDO::getAvailableDrivers()) ) {	
 	exit('PDO driver for SQLite is not installed on this system (e.g. apt install php-sqlite3.');
 }
  
 // check if php function proc_open is usable
 if( !function_exists("proc_open") ) {
-
 	exit('The PHP function proc_open is not usable. Please modify your php.ini.');
+}
+
+// check if php function proc_get_status is usable
+if( !function_exists("proc_get_status") ) {
+	exit('The PHP function proc_get_status is not usable. Please modify your php.ini.');
 }
  
 // lazy config check/load
