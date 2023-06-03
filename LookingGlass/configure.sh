@@ -190,9 +190,9 @@ function requirements() {
 	if [ -f /usr/bin/apt ]; then
 		# Check for root
 		if [ $(id -u) != "0" ]; then
-			INSTALL='sudo get'
+			INSTALL='sudo apt'
 		else
-			INSTALL='get'
+			INSTALL='apt'
 		fi
 	elif [ -f /usr/bin/yum ]; then
 		# Check for root
