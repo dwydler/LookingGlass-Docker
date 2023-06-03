@@ -80,8 +80,8 @@ else {
 		
 		<title><?php echo $siteName; ?></title>
 
-		<!-- Browser-Update.org -->
-		<script> 
+		<script>
+		// Browser-Update.org
 		var $buoop = {required:{e:-4,f:-3,o:-3,s:-1,c:-3},insecure:true,api:2023.06 }; 
 		function $buo_f(){ 
 		var e = document.createElement("script"); 
@@ -90,6 +90,10 @@ else {
 		};
 		try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
 		catch(e){window.attachEvent("onload", $buo_f)}
+
+		// Translation for JavaScript -->
+		RunTest = "<?php echo _("Run Test"); ?>"
+		Loading = "<?php echo _("Loading"); ?>"
 		</script>
 		
 		<!-- Styles -->
