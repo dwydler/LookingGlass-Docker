@@ -88,7 +88,7 @@ else {
                 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="description" content="LookingGlass - Open source PHP looking glass" />
-                <meta name="author" content="Telephone" />
+                <meta name="author" content="Daniel Wydler" />
 
                 <title><?php echo $siteName; ?></title>
 
