@@ -259,8 +259,6 @@ else {
                                         </div>
                                 </div>
                         </footer>
-
-
                 </div>
 
                 <script src="assets/js/jquery-3.7.0.min.js" integrity="sha384-NXgwF8Kv9SSAr+jemKKcbvQsz+teULH/a5UNJvZc6kP47hZgl62M1vGnw6gHQhb1" crossorigin="anonymous"></script>
