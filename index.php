@@ -262,7 +262,7 @@ else {
                 </div>
 
                 <script src="assets/js/jquery-3.7.0.min.js" integrity="sha384-NXgwF8Kv9SSAr+jemKKcbvQsz+teULH/a5UNJvZc6kP47hZgl62M1vGnw6gHQhb1" crossorigin="anonymous"></script>
-                <script src="assets/js/LookingGlass.js" integrity="sha384-OoPxdlulBpE/U0BwZMl2Z2rTOV9HaCNwCyD862mxTbgoPhJa9JiRDp5CZ268RbyS" crossorigin="anonymous"></script>
+                <script src="assets/js/LookingGlass.js" integrity="sha384-w22kXvvSJUE0SdY1oqEtBQc8ye6SlU+iEFCpC7JYf8SIoiNkx6Zh58QeAhe3M0Yo" crossorigin="anonymous"></script>
                 <script src="assets/js/XMLHttpRequest.min.js" integrity="sha384-4VZLxIdUn1yFnVIpiKDpf6aLhTZKitRINfJd0cyDjhM9c0fh+GzljUdTy38VXCvP" crossorigin="anonymous"></script>
         </body>
 </html>
