@@ -19,9 +19,8 @@
 ##
 # Create Config.php
 ##
-function createConfig()
-{
-  cat > "$DIR/$CONFIG" <<EOF
+function createConfig() {
+        cat > "$DIR/$CONFIG" <<EOF
 <?php
 /**
  * LookingGlass - User friendly PHP Looking Glass
@@ -36,48 +35,61 @@ function createConfig()
 
 // IPv4 address
 \$ipv4 = '${IPV4}';
+
 // IPv6 address (can be blank)
 \$ipv6 = '${IPV6}';
+
 // Rate limit
 \$rateLimit = (int) '${RATELIMIT}';
+
 // Site name (header)
 \$siteName = '${SITE}';
+
 // Site URL
 \$siteUrl = '${URL}';
+
 // Site URLv4
 \$siteUrlv4 = '${URLV4}';
+
 // Site URLv6
 \$siteUrlv6 = '${URLV6}';
+
 // Server location
 \$serverLocation = '${LOCATION}';
+
 // HOST
 \$host = '${HOST}';
+
 // MTR
 \$mtr = '${MTR}';
+
 // PING
 \$ping = '${PING}';
+
 // TRACEROUTE
 \$traceroute = '${TRACEROUTE}';
+
 // SQLITE3
 \$sqlite3 = '${SQLITE3}';
+
 // Test files
 \$testFiles = array();
 EOF
 
-  for i in "${TEST[@]}"; do
-    echo "\$testFiles[] = '${i}';" >> "$DIR/$CONFIG"
-  done
-  echo -e "// Theme\n\$theme = '${THEME}';" >> "$DIR/$CONFIG"
+        for i in "${TEST[@]}"; do
+                echo "\$testFiles[] = '${i}';" >> "$DIR/$CONFIG"
+        done
 
-  sleep 1
+        sleep 1
 }
 
 ##
 # Create/Load config varialbes
 ##
-function config()
-{
+function config() {
+        
         sleep 1
+        
         # Check if previous config exists
         if [ ! -f $CONFIG ]; then
                 # Create config file
@@ -94,56 +106,57 @@ function config()
                 # Read variables
                 if [ "$(echo $f1 | head -c 1)" = '$' ]; then
                         # Set Variables
-                if [ $f1 = '$ipv4' ]; then
-                        IPV4="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-                elif [ $f1 = '$ipv6' ]; then
-                        IPV6="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-                elif [ $f1 = '$rateLimit' ]; then
-                        RATELIMIT=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-                elif [ $f1 = '$serverLocation' ]; then
-                        LOCATION="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
-                elif [ $f1 = '$siteName' ]; then
-                        SITE=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-                elif [ $f1 = '$siteUrl' ]; then
-                        URL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-                elif [ $f1 = '$siteUrlv4' ]; then
-                        URLV4=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-                elif [ $f1 = '$siteUrlv6' ]; then
-                        URLV6=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-                elif [ $f1 = '$sqlite3' ]; then
-                        SQLITE3=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-                elif [ $f1 = '$testFiles[]' ]; then
-                        TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-                elif [ $f1 = '$theme' ]; then
-                        THEME="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+                        if [ $f1 = '$ipv4' ]; then
+                                IPV4="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+                        elif [ $f1 = '$ipv6' ]; then
+                                IPV6="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+                        elif [ $f1 = '$rateLimit' ]; then
+                                RATELIMIT=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        elif [ $f1 = '$serverLocation' ]; then
+                                LOCATION="$(echo $f2 | awk -F\' '{print $(NF-1)}')"
+                        elif [ $f1 = '$siteName' ]; then
+                                SITE=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        elif [ $f1 = '$siteUrl' ]; then
+                                URL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        elif [ $f1 = '$siteUrlv4' ]; then
+                                URLV4=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        elif [ $f1 = '$siteUrlv6' ]; then
+                                URLV6=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        elif [ $f1 = '$sqlite3' ]; then
+                                SQLITE3=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        elif [ $f1 = '$testFiles[]' ]; then
+                                TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        fi
                 fi
-    fi
-  done < "$DIR/$CONFIG"
+        
+        done < "$DIR/$CONFIG"
 }
 
 ##
 # Create SQLite database
 ##
-function database()
-{
-    if [ ! -f "${DIR}/ratelimit.db" ]; then
-      echo
-      echo 'Creating SQLite database...'
-      sqlite3 ratelimit.db  'CREATE TABLE RateLimit (ip TEXT UNIQUE NOT NULL, hits INTEGER NOT NULL DEFAULT 0, accessed INTEGER NOT NULL);'
-      sqlite3 ratelimit.db 'CREATE UNIQUE INDEX "RateLimit_ip" ON "RateLimit" ("ip");'
-      read -e -p 'Enter the username of your webserver (E.g. www-data): ' USER
-      read -e -p 'Enter the user group of your webserver (E.g. www-data): ' GROUP
-      # Change owner of folder & DB
-      if [[ -n $USER ]]; then
-          if [[ -n $GROUP ]]; then
-            chown $USER:$GROUP "${DIR}"
-            chown $USER:$GROUP ratelimit.db
-          else
-            chown $USER:$USER "${DIR}"
-            chown $USER:$USER ratelimit.db
-          fi
-      else
-        cat <<EOF
+function database() {
+
+        # 
+        if [ ! -f "${DIR}/ratelimit.db" ]; then
+                echo
+                echo 'Creating SQLite database...'
+                sqlite3 ratelimit.db  'CREATE TABLE RateLimit (ip TEXT UNIQUE NOT NULL, hits INTEGER NOT NULL DEFAULT 0, accessed INTEGER NOT NULL);'
+                sqlite3 ratelimit.db 'CREATE UNIQUE INDEX "RateLimit_ip" ON "RateLimit" ("ip");'
+                read -e -p 'Enter the username of your webserver (E.g. www-data): ' USER
+                read -e -p 'Enter the user group of your webserver (E.g. www-data): ' GROUP
+      
+                # Change owner of folder & DB
+                if [[ -n $USER ]]; then
+                        if [[ -n $GROUP ]]; then
+                                chown $USER:$GROUP "${DIR}"
+                                chown $USER:$GROUP ratelimit.db
+                        else
+                                chown $USER:$USER "${DIR}"
+                                chown $USER:$USER ratelimit.db
+                        fi
+                else
+                cat <<EOF
 
 ##### IMPORTANT #####
 Please set the owner of LookingGlass (subdirectory) and ratelimit.db
@@ -152,15 +165,14 @@ chown user:group LookingGlass
 chown user:group ratelimit.db
 #####################
 EOF
-      fi
-    fi
+                fi
+        fi
 }
 
 ##
 # Fix MTR on REHL based OS
 ##
-function mtrFix()
-{
+function mtrFix() {
         # Check permissions for MTR & Symbolic link
         if [ $(stat --format="%a" /usr/sbin/mtr) -ne 4755 ] || [ ! -f "/usr/bin/mtr" ]; then
                 if [ $(id -u) = "0" ]; then
@@ -291,165 +303,118 @@ EOF
 ##
 # Setup parameters for PHP file creation
 ##
-function setup()
-{
-  sleep 1
-
-  # Local vars
-  local IP4=$(ifconfig | sed -n '2 p' | awk '{print $2}')
-  local IP6=$(ifconfig | sed -n '3 p' | awk '{print $2}')
-  local LOC=
-  local S=
-  local T=
-  local U=
-
-  # User input
-  read -e -p "Enter your website name (Header/Logo) [${SITE}]: " S
-  read -e -p "Enter the public URL to this LG (including http://) [${URL}]: " U
-  read -e -p "Enter the public URLv4 to this LG (including http://) [${URLV4}]: " -i "$URLV4" UV4
-  read -e -p "Enter the public URLv6 to this LG (including http://) [${URLV6}]: " -i "$URLV6" UV6
-  read -e -p "Enter the servers location [${LOCATION}]: " LOC
-  read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IP4" IP4
-  read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
-  read -e -p "Enter the size of test files in MB (Example: 25MB 50MB 100MB) [${TEST[*]}]: " T
-  if [ -z $SQLITE3 ]; then
-        read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$RATELIMIT" RATE
-  fi
-
-  # Check local vars aren't empty; Set new values
-  if [[ -n $IP4 ]]; then
-    IPV4=$IP4
-  fi
-  # IPv6 can be left blank
-  IPV6=$IP6
-  if [[ -n $LOC ]]; then
-    LOCATION=$LOC
-  fi
-  if [[ -n $S ]]; then
-    SITE=$S
-  fi
-  if [[ -n $U ]]; then
-    URL=$U
-  fi
-  if [[ -n $U ]]; then
-    URLV4=$UV4
-  fi
-  if [[ -n $UV6 ]]; then
-    URLV6=$UV6
-  fi
-  # Rate limit
-  if [[ "$RATE" = 'y' ]] || [[ "$RATE" = 'yes' ]]; then
-    read -e -p "Enter the # of commands allowed per hour (per IP) [${RATELIMIT}]: " RATE
-    if [[ -n $RATE ]]; then
-      if [ "$RATE" != "$RATELIMIT" ]; then
-        RATELIMIT=$RATE
-      fi
-    fi
-  else
-    RATELIMIT=0
-  fi
-  # Create test files
-  if [[ -n $T ]]; then
-    echo
-    echo 'Removing old test files:'
-    # Delete old test files
-    local REMOVE=($(ls ../*.bin 2>/dev/null))
-    for i in "${REMOVE[@]}"; do
-      if [ -f "${i}" ]; then
-        echo "Removing ${i}"
-        rm "${i}"
+function setup() {
         sleep 1
-      fi
-    done
-    TEST=($T)
-    echo
-    echo 'Creating new test files:'
-    # Create new test files
-    testFiles
-  fi
+
+        # Local vars
+        local IP4=$(ifconfig | sed -n '2 p' | awk '{print $2}')
+        local IP6=$(ifconfig | sed -n '3 p' | awk '{print $2}')
+        local LOC=
+        local S=
+        local T=
+        local U=
+
+        # User input
+        read -e -p "Enter your website name (Header/Logo) [${SITE}]: " S
+        read -e -p "Enter the public URL to this LG (including http://) [${URL}]: " U
+        read -e -p "Enter the public URLv4 to this LG (including http://) [${URLV4}]: " -i "$URLV4" UV4
+        read -e -p "Enter the public URLv6 to this LG (including http://) [${URLV6}]: " -i "$URLV6" UV6
+        read -e -p "Enter the servers location [${LOCATION}]: " LOC
+        read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IP4" IP4
+        read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
+        read -e -p "Enter the size of test files in MB (Example: 100MB 1GB 10GB) [${TEST[*]}]: " T
+        if [ -z $SQLITE3 ]; then
+                read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$RATELIMIT" RATE
+        fi
+
+        # Check local vars aren't empty; Set new values
+        if [[ -n $IP4 ]]; then
+                IPV4=$IP4
+        fi
+
+        # IPv6 can be left blank
+        IPV6=$IP6
+        if [[ -n $LOC ]]; then
+                LOCATION=$LOC
+        fi
+
+        if [[ -n $S ]]; then
+                SITE=$S
+        fi
+
+        if [[ -n $U ]]; then
+                URL=$U
+        fi
+
+        if [[ -n $U ]]; then
+                URLV4=$UV4
+        fi
+
+        if [[ -n $UV6 ]]; then
+                URLV6=$UV6
+        fi
+
+        # Rate limit
+        if [[ "$RATE" = 'y' ]] || [[ "$RATE" = 'yes' ]]; then
+                read -e -p "Enter the # of commands allowed per hour (per IP) [${RATELIMIT}]: " RATE
+                if [[ -n $RATE ]]; then
+                        if [ "$RATE" != "$RATELIMIT" ]; then
+                                RATELIMIT=$RATE
+                        fi
+                fi
+        else
+                RATELIMIT=0
+        fi
+
+         # Create test files
+        if [[ -n $T ]]; then
+                echo
+                echo 'Removing old test files:'
+    
+                # Delete old test files
+                local REMOVE=($(ls ../*.bin 2>/dev/null))
+    
+                for i in "${REMOVE[@]}"; do
+                        if [ -f "${i}" ]; then
+                                echo "Removing ${i}"
+                                rm "${i}"
+                                sleep 1
+                        fi
+                done
+    
+                TEST=($T)
+
+                # Create new test files
+                echo
+                echo 'Creating new test files:'          
+                testFiles
+        fi
 }
 
 ##
 # Create test files
 ##
-function testFiles()
-{
-  sleep 1
+function testFiles() {
+        sleep 1
 
-  # Local var/s
-  local A=0
+        # Local var/s
+        local A=0
 
-  # Check for and/or create test file
-  for i in "${TEST[@]}"; do
-    if [[ -n i ]] && [ ! -f "../${i}.bin" ]; then
-      echo "Creating $i test file"
-          shred --exact --iterations=1 --size="${i}" - > "../${i}.bin"
-      A=$((A+1))
-      sleep 1
-    fi
-  done
+        # Check for and/or create test file
+        for i in "${TEST[@]}"; do
+                if [[ -n i ]] && [ ! -f "../${i}.bin" ]; then
+                        echo "Creating $i test file"
+                        shred --exact --iterations=1 --size="${i}" - > "../${i}.bin"
+                        A=$((A+1))
+                        sleep 1
+                fi
+        done
 
-  # No test files were created
-  if [ $A = 0 ]; then
-    echo 'Test files already exist...'
-  fi
+        # No test files were created
+        if [ $A = 0 ]; then
+                echo 'Test files already exist...'
+        fi
 }
-
-##
-# Choose default theme
-##
-function defaultTheme()
-{
-  # Set default theme
-  if [[ "$THEME" = '' ]]; then
-    THEME='bootstrap.min.css'
-  fi
-
-  # Change theme
-  read -e -p "Would you like to choose a different theme? (y/n): " NEWTHEME
-  if [[ "$NEWTHEME" = 'y' ]] || [[ "$NEWTHEME" = 'yes' ]]; then
-    cat <<EOF
-
-#########################################
-#
-# Themes:
-#
-# 1) cerulean
-# 2) readable
-# 3) spacelab
-# 4) united
-#
-# Demo: http://lg.iamtelephone.com/themes
-#
-#########################################
-
-EOF
-  MATCH=
-  while [[ -z $MATCH ]]; do
-    themeChange
-  done
-  fi
-}
-
-##
-# Loop to change theme
-##
-function themeChange()
-{
-  read -e -p "Enter the name of the theme (case sensitive) [${THEME}]: " NEWTHEME
-
-  if [[ -n $NEWTHEME ]]; then
-    # Check for valid theme
-    VALID=(bootstrap.min.css)
-    MATCH=$(echo "${VALID[@]:0}" | grep -o $NEWTHEME)
-    if [[ ! -z $MATCH ]]; then
-      THEME=$NEWTHEME
-    fi
-  else
-    MATCH=' '
-  fi
-}
-
 
 ###########################
 ##                       ##
@@ -478,18 +443,18 @@ EOF
 read -e -p "Do you wish to install LookingGlass? (y/n): " ANSWER
 
 if [[ "$ANSWER" = 'y' ]] || [[ "$ANSWER" = 'yes' ]]; then
-  cat <<EOF
+        cat <<EOF
 
 ###              ###
 # Starting install #
 ###              ###
 
 EOF
-  sleep 1
+        sleep 1
 else
-  echo 'Installation stopped :('
-  echo
-  exit
+        echo 'Installation terminated.'
+        echo
+        exit
 fi
 
 # Global vars
@@ -509,21 +474,22 @@ PING=
 TRACEROUTE=
 SQLITE3=
 TEST=()
-THEME=
-
 
 # Install required scripts
 echo 'Checking script requirements:'
 requirements
 echo
+
 # Read Config file
 echo 'Checking for previous config:'
 config
 echo
+
 # Create test files
 echo 'Creating test files:'
 testFiles
 echo
+
 # Follow setup
 cat <<EOF
 
@@ -534,9 +500,6 @@ cat <<EOF
 EOF
 echo 'Running setup:'
 setup
-echo
-# Theme
-defaultTheme
 echo
 
 # Create Config.php file

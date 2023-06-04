@@ -60,7 +60,7 @@ if( !setlocale(LC_ALL, 'en_US.utf8') ) {
 if (file_exists('LookingGlass/Config.php')) {
         require 'LookingGlass/Config.php';
 
-        if (!isset($siteName, $siteUrl, $serverLocation, $testFiles, $theme)) {
+        if (!isset($siteName, $siteUrl, $serverLocation, $testFiles)) {
                 exit('Configuration variable/s missing. Please run configure.sh.');
         }
 }
