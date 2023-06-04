@@ -60,7 +60,7 @@ if( !setlocale(LC_ALL, 'en_US.utf8') ) {
 if (file_exists('LookingGlass/Config.php')) {
         require 'LookingGlass/Config.php';
 
-        if (!isset($ipv4, $siteName, $siteUrl, $serverLocation, $testFiles, $theme)) {
+        if (!isset($siteName, $siteUrl, $serverLocation, $testFiles, $theme)) {
                 exit('Configuration variable/s missing. Please run configure.sh.');
         }
 }
@@ -199,13 +199,13 @@ else {
                                                                         <div class="form-group mr-1 col">
                                                                                 <select name="cmd" class="form-select">
                                                                                         <?php
-                                                                                        if (empty($host)) { echo '<option value="host">host</option>'; }
+                                                                                        if ( (!empty($ipv4)) and (empty($host)) ) { echo '<option value="host">host</option>'; }
                                                                                         if ( (!empty($ipv6)) and (empty($host)) ) { echo '<option value="host6">host6</option>'; }
-                                                                                        if (empty($mtr)) { echo '<option value="mtr">mtr</option>'; }
+                                                                                        if ( (!empty($ipv4)) and (empty($mtr)) ) { echo '<option value="mtr">mtr</option>'; }
                                                                                         if ( (!empty($ipv6)) and (empty($mtr)) ) { echo '<option value="mtr6">mtr6</option>'; }
-                                                                                        if (empty($ping)) { echo '<option value="ping" selected="selected">ping</option>'; }
+                                                                                        if ( (!empty($ipv4)) and (empty($ping)) ) { echo '<option value="ping" selected="selected">ping</option>'; }
                                                                                         if ( (!empty($ipv6)) and (empty($ping)) ) { echo '<option value="ping6">ping6</option>'; }
-                                                                                        if (empty($traceroute)) { echo '<option value="traceroute">traceroute</option>'; }
+                                                                                        if ( (!empty($ipv4)) and (empty($traceroute)) ) { echo '<option value="traceroute">traceroute</option>'; }
                                                                                         if ( (!empty($ipv6)) and (empty($traceroute)) ) { echo '<option value="traceroute6">traceroute6</option>'; }
                                                                                         ?>
                                                                                 </select>
