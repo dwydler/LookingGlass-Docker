@@ -82,7 +82,7 @@ else {
 ?>
 
 <!DOCTYPE html>
-<html lang="en" xml:lang="en">
+<html lang="en" xml:lang="en" data-bs-theme="light">
         <head>
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -115,7 +115,7 @@ else {
         <body>
                 <!-- Container -->
                 <div class="container">
-
+                <input class="form-check-input" type="checkbox" id="lightSwitch" />
                         <!-- Header -->
                         <div class="row" id="header">
                                 <div class="col-12">
@@ -235,15 +235,31 @@ else {
                         </div>
 
                         <footer class="footer mt-2 mb-2">
-                                <p class="float-end">
-                                        <a href="#"><?php echo _("Back to top"); ?></a>
-                                </p>
-                                <p>
-                                <?php echo _("Powered by").": "; ?><a target="_blank" href="https://github.com/telephone/LookingGlass">LookingGlass</a> |
-                                <?php echo _("Modified by").": "; ?><a target="_blank" href="https://codeberg.org/wd/LookingGlass">Daniel Wydler</a> |
-                                <?php echo _("Language").": "; ?> <a href="?lang=en_US">EN</a> <a href="?lang=de_DE">DE</a>
-                                </p>
+                                <div class="row">
+                                        <div class="col col-lg-auto me-0 pe-0">
+                                        <?php echo _("Powered by").": "; ?><a target="_blank" href="https://github.com/telephone/LookingGlass">LookingGlass</a> |
+                                        </div>
+                                        <div class="col col-lg-auto mx-0 px-0">
+                                        <?php echo _("Modified by").": "; ?><a target="_blank" href="https://codeberg.org/wd/LookingGlass">Daniel Wydler</a> |
+                                        </div>
+                                        <div class="col col-lg-auto mx-0 px-0">
+                                        <?php echo _("Language").": "; ?> <a href="?lang=en_US">EN</a> <a href="?lang=de_DE">DE</a>
+                                        </div>
+                                        <div class="col">
+                                        </div>
+                                        <div class="col col-lg-auto">
+                                                <div class="d-inline-block">Darkmode:</div>
+                                                <div class="form-check form-switch d-inline-block">
+                                                        <input class="form-check-input" type="checkbox" id="lightSwitch" style="cursor: pointer;" />
+                                                        <label for="site_state" class="form-check-label">On</label>
+                                                </div>
+                                        </div>
+                                        <div class="col col-lg-1 text-end">
+                                                <a href="#"><?php echo _("Back to top"); ?></a>
+                                        </div>
+                                </div>
                         </footer>
+
 
                 </div>
 
