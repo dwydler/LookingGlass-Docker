@@ -243,7 +243,7 @@ else {
                                         }
                                         if (!empty($imprinturl)) {
                                                 echo "<div class=\"col col-lg-auto mx-0 px-0\">";
-                                                echo " | <a href=\"".$imprinturl."\" target=\"_blank\">"._("Imprint")."</a> ";
+                                                echo "&nbsp;|&nbsp;<a href=\"".$imprinturl."\" target=\"_blank\">"._("Imprint")."</a>";
                                                 echo "</div>";
                                         }
                                         ?>
