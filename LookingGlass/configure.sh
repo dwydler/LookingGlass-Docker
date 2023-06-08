@@ -368,7 +368,7 @@ function setup() {
         fi
 
          if [[ -n $PriUrl ]]; then
-                URLV6=$PriUrl
+                PrivacyUrl=$PriUrl
         fi
 
          if [[ -n $ImpUrl ]]; then
@@ -494,6 +494,8 @@ MTR=
 PING=
 TRACEROUTE=
 SQLITE3=
+PrivacyUrl=
+ImprintUrl=
 TEST=()
 
 # Install required scripts
