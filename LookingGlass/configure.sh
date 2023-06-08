@@ -137,7 +137,7 @@ function config() {
                                 PRIVACYURL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$imprinturl' ]; then
                                 IMPRINTURL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-                        elif [ $f1 = '$iprefport' ]; then
+                        elif [ $f1 = '$iperfport' ]; then
                                 IPERFPORT=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$testFiles[]' ]; then
                                 TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
