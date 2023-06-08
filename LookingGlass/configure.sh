@@ -132,9 +132,9 @@ function config() {
                         elif [ $f1 = '$sqlite3' ]; then
                                 SQLITE3=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$privacyurl' ]; then
-                                PrivacyUrl=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                                PRIVACYURL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$imprinturl' ]; then
-                                ImprintUrl=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                                IMPRINTURL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$testFiles[]' ]; then
                                 TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         fi
@@ -330,8 +330,8 @@ function setup() {
         read -e -p "Enter the public URL to this LG (including http://) [${URL}]: " U
         read -e -p "Enter the public URLv4 to this LG (including http://) [${URLV4}]: " -i "$URLV4" UV4
         read -e -p "Enter the public URLv6 to this LG (including http://) [${URLV6}]: " -i "$URLV6" UV6
-        read -e -p "Enter the public URL to an Privacy [${PrivacyUrl}]: " -i "$PrivacyUrl" PriUrl
-        read -e -p "Enter the public URL to an Imprint [${ImprintUrl}]: " -i "$ImprintUrl" ImpUrl
+        read -e -p "Enter the public URL to an Privacy [${PRIVACYURL}]: " -i "$PRIVACYURL" PRIURL
+        read -e -p "Enter the public URL to an Imprint [${IMPRINTURL}]: " -i "$IMPRINTURL" IMPURL
         read -e -p "Enter the servers location [${LOCATION}]: " LOC
         read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IP4" IP4
         read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
@@ -367,12 +367,12 @@ function setup() {
                 URLV6=$UV6
         fi
 
-         if [[ -n $PriUrl ]]; then
-                PrivacyUrl=$PriUrl
+         if [[ -n $PRIURL ]]; then
+                PRIVACYURL=$PRIURL
         fi
 
-         if [[ -n $ImpUrl ]]; then
-                ImprintUrl=$ImpUrl
+         if [[ -n $IMPURL ]]; then
+                IMPRINTURL=$IMPURL
         fi
 
         # Rate limit
@@ -494,8 +494,8 @@ MTR=
 PING=
 TRACEROUTE=
 SQLITE3=
-PrivacyUrl=
-ImprintUrl=
+PRIVACYURL=
+IMPRINTURL=
 TEST=()
 
 # Install required scripts
