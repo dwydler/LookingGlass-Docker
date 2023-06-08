@@ -313,6 +313,21 @@ EOF
                 fi
         echo
         fi
+
+        # command iperf3
+        echo 'Checking for iperf3...'
+        if [ ! -f "/usr/bin/iperf3" ]; then
+                if [ "$INSTALL" = "none" ]; then
+                        SQLITE3='NULL'
+                elif [ "$INSTALL" = "yum" ]; then
+                        echo "Please install: ${INSTALL} -y install iperf3."
+                        exit
+                else
+                        echo "Please install: ${INSTALL} -y install iperf3."
+                        exit
+                fi
+        echo
+        fi
 }
 
 ##
