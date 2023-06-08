@@ -143,7 +143,7 @@ else {
                                         <div class="card">
                                                 <div class="card-header">
                                                         <?php
-                                                        echo _("Iperf Informations")." ";
+                                                        echo _("Iperf Informations")."(<a href=\"https://iperf.fr/\" target=\"_blank\">"._("Iperf Help")."</a>)";
                                                         ?>
 
                                                 </div>
@@ -156,7 +156,7 @@ else {
                                                         echo "<p>Port: ".$iperfport."</p>";
                                                 }
                                                 else {
-                                                        echo "<p>"._("Iperf is not configured on this server").".</p>";
+                                                        echo "<p>"._("Iperf is not configured").".</p>";
                                                 } 
                                                 ?>
                                                 </div>

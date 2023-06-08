@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1\n"
+"Project-Id-Version: 0.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-16 14:55+0200\n"
-"PO-Revision-Date: 2018-09-19 08:24+0200\n"
+"PO-Revision-Date: 2023-06-088 09:59+0200\n"
 "Last-Translator: Daniel Wydler <EMAIL@ADDRESS>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -112,5 +112,9 @@ msgid "Iperf Informations"
 msgstr "Iperf Informationen"
 
 #: index.php
-msgid "Iperf is not configured on this server"
+msgid "Iperf is not configured"
 msgstr "Iperf ist auf diesem Server nicht konfiguriert"
+
+#: index.php
+msgid "Iperf Help"
+msgstr "Hilfe"
