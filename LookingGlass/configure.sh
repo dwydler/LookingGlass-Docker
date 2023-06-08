@@ -73,10 +73,10 @@ function createConfig() {
 \$sqlite3 = '${SQLITE3}';
 
 // Privacy Url
-\$privacyurl = '${PrivacyUrl}';
+\$privacyurl = '${PRIVACYURL}';
 
 // Imprint Url
-\$imprinturl = '${ImprintUrl}';
+\$imprinturl = '${IMPRINTURL}';
 
 
 // Test files
