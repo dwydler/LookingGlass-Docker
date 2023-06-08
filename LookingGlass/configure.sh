@@ -366,7 +366,7 @@ function setup() {
         if [[ -n $UV6 ]]; then
                 URLV6=$UV6
         fi
-
+        # Assign entered value to script variable
         PRIVACYURL=$PRIURL
         IMPRINTURL=$IMPURL
         
