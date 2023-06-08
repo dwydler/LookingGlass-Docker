@@ -33,14 +33,6 @@ class LookingGlass
         return false;
     }
 	
-	public function host6($host)
-    {
-        if ($host = $this->validate($host, 6)) {
-            return $this->procExecute('host', $host);
-        }
-        return false;
-    }
-
     /**
      * Execute a 'mtr' command against given host:
      * Mtr combines the functionality of the traceroute and ping programs in a
