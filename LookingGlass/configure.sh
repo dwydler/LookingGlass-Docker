@@ -367,13 +367,9 @@ function setup() {
                 URLV6=$UV6
         fi
 
-         if [[ -n $PRIURL ]]; then
-                PRIVACYURL=$PRIURL
-        fi
-
-         if [[ -n $IMPURL ]]; then
-                IMPRINTURL=$IMPURL
-        fi
+        PRIVACYURL=$PRIURL
+        IMPRINTURL=$IMPURL
+        
 
         # Rate limit
         if [[ "$RATE" = 'y' ]] || [[ "$RATE" = 'yes' ]]; then
