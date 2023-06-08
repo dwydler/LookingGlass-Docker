@@ -104,5 +104,5 @@ msgid "Privacy"
 msgstr "Datenschutz"
 
 #: index.php
-msid "Imprint"
+msgid "Imprint"
 msgstr "Impressum"
