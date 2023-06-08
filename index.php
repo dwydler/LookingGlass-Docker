@@ -227,10 +227,10 @@ else {
                         <footer class="footer mt-2 mb-2">
                                 <div class="row">
                                         <div class="col col-lg-auto me-0 pe-0">
-                                        <?php echo _("Powered by").": "; ?><a target="_blank" href="https://github.com/telephone/LookingGlass">LookingGlass</a> |
+                                        <?php echo _("Powered by").": "; ?><a target="_blank" href="https://github.com/telephone/LookingGlass">LookingGlass</a>&nbsp;|&nbsp;
                                         </div>
                                         <div class="col col-lg-auto mx-0 px-0">
-                                        <?php echo _("Modified by").": "; ?><a target="_blank" href="https://codeberg.org/wd/LookingGlass">Daniel Wydler</a> |
+                                        <?php echo _("Modified by").": "; ?><a target="_blank" href="https://codeberg.org/wd/LookingGlass">Daniel Wydler</a>&nbsp;|&nbsp;
                                         </div>
                                         <div class="col col-lg-auto mx-0 px-0">
                                         <?php echo _("Language").": "; ?> <a href="?lang=en_US">EN</a> <a href="?lang=de_DE">DE</a>
@@ -238,7 +238,7 @@ else {
                                         <?php
                                         if (!empty($privacyurl)) {
                                                 echo "<div class=\"col col-lg-auto mx-0 px-0\">";
-                                                echo " | <a href=\"".$privacyurl."\" target=\"_blank\">"._("Privacy")."</a> ";
+                                                echo "&nbsp;|&nbsp;<a href=\"".$privacyurl."\" target=\"_blank\">"._("Privacy")."</a> ";
                                                 echo "</div>";
                                         }
                                         if (!empty($imprinturl)) {
