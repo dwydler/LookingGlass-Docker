@@ -72,6 +72,13 @@ function createConfig() {
 // SQLITE3
 \$sqlite3 = '${SQLITE3}';
 
+// Privacy Url
+\$privacyurl = '${PrivacyUrl}';
+
+// Imprint Url
+\$imprinturl = '${ImprintUrl}';
+
+
 // Test files
 \$testFiles = array();
 EOF
@@ -124,6 +131,10 @@ function config() {
                                 URLV6=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$sqlite3' ]; then
                                 SQLITE3=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        elif [ $f1 = '$privacyurl' ]; then
+                                PrivacyUrl=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        elif [ $f1 = '$imprinturl' ]; then
+                                ImprintUrl=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$testFiles[]' ]; then
                                 TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         fi
@@ -319,6 +330,8 @@ function setup() {
         read -e -p "Enter the public URL to this LG (including http://) [${URL}]: " U
         read -e -p "Enter the public URLv4 to this LG (including http://) [${URLV4}]: " -i "$URLV4" UV4
         read -e -p "Enter the public URLv6 to this LG (including http://) [${URLV6}]: " -i "$URLV6" UV6
+        read -e -p "Enter the public URL to an Privacy [${PrivacyUrl}]: " -i "$PrivacyUrl" PriUrl
+        read -e -p "Enter the public URL to an Imprint [${ImprintUrl}]: " -i "$ImprintUrl" ImpUrl
         read -e -p "Enter the servers location [${LOCATION}]: " LOC
         read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IP4" IP4
         read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
@@ -352,6 +365,14 @@ function setup() {
 
         if [[ -n $UV6 ]]; then
                 URLV6=$UV6
+        fi
+
+         if [[ -n $PriUrl ]]; then
+                URLV6=$PriUrl
+        fi
+
+         if [[ -n $ImpUrl ]]; then
+                ImprintUrl=$ImpUrl
         fi
 
         # Rate limit
