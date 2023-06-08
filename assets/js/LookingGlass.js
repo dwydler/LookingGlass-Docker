@@ -73,12 +73,12 @@ $("input[id='lightSwitch']").on("change", function() {
 
   $.ajax({
     type : 'GET',
-    url : 'sess.php',
+    url : 'ajax.php',
     data: {
         theme : HtmlTheme,
     },
     success : function(data) {
-            // alert(data);
+      // alert(HtmlTheme);
     },
     error : function(XMLHttpRequest, textStatus, errorThrown) {
       alert ("Error Occured!");}
