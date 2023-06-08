@@ -88,3 +88,11 @@ msgstr ""
 #: index.php:154
 msgid "Modified by"
 msgstr ""
+
+#: index.php
+msgid "Privacy"
+msgstr ""
+
+#: index.php
+msgid "Imprint"
+msgstr ""
