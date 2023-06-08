@@ -105,7 +105,7 @@ else {
         <body>
                 <!-- Container -->
                 <div class="container">
-                <input class="form-check-input" type="checkbox" id="lightSwitch" />
+                
                         <!-- Header -->
                         <div class="row" id="header">
                                 <div class="col-12">
