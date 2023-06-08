@@ -79,10 +79,15 @@ if ( (isset($_GET["lang"])) && (preg_match("/^[a-z]{2}\_[A-Z]{2}$/",$_GET["lang"
 else {
         $locale = "en_US.UTF-8";
 }
+
+// Choose the defined theme
+if ( !isset ($_SESSION["theme"])) {
+        $_SESSION["theme"] = "light";
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en" xml:lang="en" data-bs-theme="light">
+<html lang="en" xml:lang="en" data-bs-theme="<?php echo $_SESSION["theme"]; ?>">
         <head>
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -280,7 +285,8 @@ else {
                                         <div class="col col-lg-auto">
                                                 <div class="d-inline-block">Darkmode:</div>
                                                 <div class="form-check form-switch d-inline-block">
-                                                        <input class="form-check-input" type="checkbox" id="lightSwitch" style="cursor: pointer;" />
+                                                        <input class="form-check-input" type="checkbox" id="lightSwitch" style="cursor: pointer;"
+                                                                <?php if ($_SESSION["theme"] == "dark") { echo "checked"; } ?> />
                                                         <label for="site_state" class="form-check-label">On</label>
                                                 </div>
                                         </div>
