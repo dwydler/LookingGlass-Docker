@@ -156,7 +156,7 @@ else {
                                                         echo "<p>Port: ".$iperfport."</p>";
                                                 }
                                                 else {
-                                                        echo "<p>"._("Iperf is not configured").".</p>";
+                                                        echo "<p>"._("Iperf is not configured on this server").".</p>";
                                                 } 
                                                 ?>
                                                 </div>
