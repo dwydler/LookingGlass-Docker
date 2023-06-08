@@ -349,13 +349,7 @@ function setup() {
                 read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$YESNO" RATE
         fi
 
-        # Check local vars aren't empty; Set new values
-        if [[ -n $IP4 ]]; then
-                IPV4=$IP4
-        fi
-
-        # IPv6 can be left blank
-        IPV6=$IP6
+        # Check local vars aren't empty; Set new values  
         if [[ -n $LOC ]]; then
                 LOCATION=$LOC
         fi
@@ -368,14 +362,11 @@ function setup() {
                 URL=$U
         fi
 
-        if [[ -n $U ]]; then
-                URLV4=$UV4
-        fi
-
-        if [[ -n $UV6 ]]; then
-                URLV6=$UV6
-        fi
-        # Assign entered value to script variable
+        # Assign entered value to script variable, can be left blank
+        IPV4=$IP4
+        IPV6=$IP6
+        URLV4=$UV4
+        URLV6=$UV6
         PRIVACYURL=$PRIURL
         IMPRINTURL=$IMPURL
         
