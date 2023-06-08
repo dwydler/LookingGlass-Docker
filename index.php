@@ -139,7 +139,7 @@ else {
                                                 </div>
                                         </div>
                                 </div>
-                                <div class="col-md-3 mt-2 mb-3">
+                                <div class="col-md-4 mt-2 mb-3">
                                         <div class="card">
                                                 <div class="card-header">
                                                         <?php
@@ -168,7 +168,7 @@ else {
                                         </div>
                                 </div>
 
-                                <div class="col-md-4 mt-2 mb-3">
+                                <div class="col-md-3 mt-2 mb-3">
                                         <div class="card">
                                                 <div class="card-header"><?php echo _("Network Test Files"); ?></div>
                                                 <div class="card-body" style="height: 200px;">
