@@ -150,10 +150,15 @@ else {
                                                 <div class="card-body" style="height: 200px;">
                                                 <?php 
                                                 if ($iperfport) {
-                                                        echo "<p>"._("DS&nbsp;&nbsp;").": ".$siteUrl."</p>";
-                                                        echo "<p>"._("IPv4").": ".$siteUrlv4."</p>";
-                                                        if (!empty($ipv6)) { echo "<p>"._("IPv6").": ".$siteUrlv6."</p>"; }
-                                                        echo "<p>Port: ".$iperfport."</p>";
+                                                        echo "<p><u>"._("IPv4")."</u></br>
+                                                                iperf3.exe -c ".$ipv4." -p 5201 -P 4</br>
+                                                                iperf3.exe -c ".$ipv4." -p 5201 -P 4 -R</p>";
+
+                                                        if (!empty($ipv6)) {
+                                                                echo "<p><u>"._("IPv6")."</u></br>
+                                                                iperf3.exe -c ".$ipv6." -p 5201 -P 4</br>
+                                                                iperf3.exe -c ".$ipv6." -p 5201 -P 4 -R</p>";
+                                                        }
                                                 }
                                                 else {
                                                         echo "<p>"._("Iperf is not configured").".</p>";
