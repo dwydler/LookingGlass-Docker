@@ -117,7 +117,7 @@ else {
 
                         <!-- Network Information -->
                         <div class="row">
-                                <div class="col-md-6 mt-2 mb-3">
+                                <div class="col-md-5 mt-2 mb-3">
                                         <div class="card">
                                                 <div class="card-header">
                                                         <?php
@@ -139,7 +139,31 @@ else {
                                                 </div>
                                         </div>
                                 </div>
-                                <div class="col-md-6 mt-2 mb-3">
+                                <div class="col-md-3 mt-2 mb-3">
+                                        <div class="card">
+                                                <div class="card-header">
+                                                        <?php
+                                                        echo _("Iperf Informations")." ";
+                                                        ?>
+
+                                                </div>
+                                                <div class="card-body" style="height: 200px;">
+                                                <?php 
+                                                if ($iperfport) {
+                                                        echo "<p>"._("DS&nbsp;&nbsp;").": ".$siteUrl."</p>";
+                                                        echo "<p>"._("IPv4").": ".$siteUrlv4."</p>";
+                                                        if (!empty($ipv6)) { echo "<p>"._("IPv6").": ".$siteUrlv6."</p>"; }
+                                                        echo "<p>Port: ".$iperfport."</p>";
+                                                }
+                                                else {
+                                                        echo "<p>"._("Iperf is not configured")."</p>";
+                                                } 
+                                                ?>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="col-md-4 mt-2 mb-3">
                                         <div class="card">
                                                 <div class="card-header"><?php echo _("Network Test Files"); ?></div>
                                                 <div class="card-body" style="height: 200px;">

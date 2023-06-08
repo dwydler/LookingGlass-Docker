@@ -106,3 +106,11 @@ msgstr "Datenschutz"
 #: index.php
 msgid "Imprint"
 msgstr "Impressum"
+
+#: index.php
+msgid "Iperf Informations"
+msgstr "Iperf Informationen"
+
+#: index.php
+msgid "Iperf is not configured"
+msgstr "Iperf ist auf diesem Server nicht konfiguriert."

@@ -78,6 +78,8 @@ function createConfig() {
 // Imprint Url
 \$imprinturl = '${IMPRINTURL}';
 
+// Iperf Port
+\$iperfport = '${IPERFPORT}';
 
 // Test files
 \$testFiles = array();
@@ -135,6 +137,8 @@ function config() {
                                 PRIVACYURL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$imprinturl' ]; then
                                 IMPRINTURL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+                        elif [ $f1 = '$iprefport' ]; then
+                                IPERFPORT=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$testFiles[]' ]; then
                                 TEST+=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         fi
@@ -335,6 +339,7 @@ function setup() {
         read -e -p "Enter the servers location [${LOCATION}]: " LOC
         read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IP4" IP4
         read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
+        read -e -p "Enter the Port for the Ipref Server [${IPERFPORT}]: " -i "$IPERFPORT" IPP
         read -e -p "Enter the size of test files in MB (Example: 100MB 1GB 10GB) [${TEST[*]}]: " T
         if [ -z $SQLITE3 ]; then
 
@@ -369,7 +374,7 @@ function setup() {
         URLV6=$UV6
         PRIVACYURL=$PRIURL
         IMPRINTURL=$IMPURL
-        
+        IPERFPORT=$IPP
 
         # Rate limit
         if [[ "$RATE" = 'y' ]] || [[ "$RATE" = 'yes' ]]; then
@@ -492,6 +497,7 @@ TRACEROUTE=
 SQLITE3=
 PRIVACYURL=
 IMPRINTURL=
+IPERFPORT=
 TEST=()
 
 # Install required scripts
