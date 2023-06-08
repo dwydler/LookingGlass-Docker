@@ -337,7 +337,16 @@ function setup() {
         read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
         read -e -p "Enter the size of test files in MB (Example: 100MB 1GB 10GB) [${TEST[*]}]: " T
         if [ -z $SQLITE3 ]; then
-                read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$RATELIMIT" RATE
+
+                # Set default value
+                YESNO="y"
+
+                # Check if perviously set an rate limit
+                if [ $RATELIMIT -eq "0" ]; then
+                        YESNO="n"
+                fi
+                
+                read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$YESNO" RATE
         fi
 
         # Check local vars aren't empty; Set new values
@@ -373,7 +382,7 @@ function setup() {
 
         # Rate limit
         if [[ "$RATE" = 'y' ]] || [[ "$RATE" = 'yes' ]]; then
-                read -e -p "Enter the # of commands allowed per hour (per IP) [${RATELIMIT}]: " RATE
+                read -e -p "Enter the # of commands allowed per hour (per IP) [${RATELIMIT}]: " -i "$RATELIMIT" RATE
                 if [[ -n $RATE ]]; then
                         if [ "$RATE" != "$RATELIMIT" ]; then
                                 RATELIMIT=$RATE
