@@ -143,7 +143,7 @@ else {
                                         <div class="card">
                                                 <div class="card-header">
                                                         <?php
-                                                        echo _("Iperf Informations")."(<a href=\"https://iperf.fr/\" target=\"_blank\">"._("Iperf Help")."</a>)";
+                                                        echo _("Iperf Informations")."&nbsp;(<a href=\"https://iperf.fr/\" target=\"_blank\">"._("Iperf Help")."</a>)";
                                                         ?>
 
                                                 </div>
