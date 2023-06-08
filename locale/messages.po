@@ -102,5 +102,5 @@ msgid "Iperf Informations"
 msgstr ""
 
 #: index.php
-msgid "Iperf is not configured"
-msgstr "Iperf is not configured on this server."
+msgid "Iperf is not configured on this server"
+msgstr ""
