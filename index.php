@@ -10,6 +10,13 @@
  * @version     1.4.0
  */
 
+// Set an unique session name
+session_name("consentUUID");
+
+// Set session cookie details
+// Parameters: Lifetime, Path, Domain, SECURE, HTTPonly
+session_set_cookie_params(1440, "/", ".".$_SERVER["HTTP_HOST"], false, true);
+
 // Start new or resume existing session
 session_start();
 

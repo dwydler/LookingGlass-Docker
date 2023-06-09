@@ -10,8 +10,12 @@
  * @version     1.4.0
  */
 
+// Set an unique session name
+session_name("consentUUID");
+
 // Start new or resume existing session
 session_start();
+
 
 // csrf protection
 if (!empty($_GET["csrf"])) {
