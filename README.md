@@ -20,6 +20,7 @@ Demo is running on a Cloud Server of Hetzner Online GmbH.
 * Live output via long polling
 * Multi Language System. New Languages are Welcome!
 * Rate limiting of network commands
+* Darkmode
 
 ## Implemented commands
 
