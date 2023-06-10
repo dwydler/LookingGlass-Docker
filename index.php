@@ -142,7 +142,7 @@ if ( !isset ($_SESSION["theme"])) {
                                                         <?php
                                                         echo _("Network information")." ";
 
-                                                        if ( (!empty($siteUrlv4)) &&  (!empty($siteUrlv6)) ) {
+                                                        if ( (!empty($siteUrlv4)) && (!empty($siteUrlv6)) ) {
                                                                 echo "( <a href=\"".$siteUrl."?lang=".$locale."\">"._("DualStack")."</a> |
                                                                         <a href=\"".$siteUrlv4."?lang=".$locale."\">"._("Only IPv4")."</a> |
                                                                                 <a href=\"".$siteUrlv6."?lang=".$locale."\">"._("Only IPv6")."</a> )";
@@ -151,10 +151,12 @@ if ( !isset ($_SESSION["theme"])) {
 
                                                 </div>
                                                 <div class="card-body" style="height: 200px;">
-                                                        <p><?php echo _("Server Location"); ?>: <strong><?php echo $serverLocation; ?></strong></p>
-                                                        <p><?php echo _("IPv4 Address").": ".$ipv4; ?></p>
-                                                        <?php if (!empty($ipv6)) { echo "<p>"._("IPv6 Address").": ".$ipv6."</p>"; } ?>
-                                                        <p><?php echo _("Your IP Address"); ?>: <strong><a href="#tests" id="userip"><?php echo $_SERVER['REMOTE_ADDR']; ?></a></strong></p>
+                                                        <?php
+                                                         echo _("Server Location").": <strong>".$serverLocation."</strong></p>";
+                                                         if (!empty($ipv4)) { echo _("IPv4 Address").": ".$ipv4."</p>"; }
+                                                         if (!empty($ipv6)) { echo "<p>"._("IPv6 Address").": ".$ipv6."</p>"; }
+                                                         echo "<p>"._("Your IP Address").": <strong><a href=\"#tests\" id=\"userip\">". $_SERVER['REMOTE_ADDR']."</a></strong></p>";
+                                                        ?>
                                                 </div>
                                         </div>
                                 </div>
@@ -169,10 +171,11 @@ if ( !isset ($_SESSION["theme"])) {
                                                 <div class="card-body" style="height: 200px;">
                                                 <?php 
                                                 if ($iperfport) {
-                                                        echo "<p><u>"._("IPv4")."</u></br>
+                                                        if (!empty($ipv4)) {
+                                                                echo "<p><u>"._("IPv4")."</u></br>
                                                                 iperf3.exe -c ".$ipv4." -p 5201 -P 4</br>
                                                                 iperf3.exe -c ".$ipv4." -p 5201 -P 4 -R</p>";
-
+                                                        }
                                                         if (!empty($ipv6)) {
                                                                 echo "<p><u>"._("IPv6")."</u></br>
                                                                 iperf3.exe -c ".$ipv6." -p 5201 -P 4</br>
@@ -191,28 +194,25 @@ if ( !isset ($_SESSION["theme"])) {
                                         <div class="card">
                                                 <div class="card-header"><?php echo _("Network Test Files"); ?></div>
                                                 <div class="card-body" style="height: 200px;">
-                                                        <h4><?php echo _("IPv4 Download Test"); ?></h4>
                                                         <?php
-                                                                foreach ($testFiles as $val)
-                                                                        {
+                                                        if (!empty($ipv4)) {
+                                                                echo "<h4>"._("IPv4 Download Test")."</h4>";
+                                                                foreach ($testFiles as $val) {
                                                                         echo "<a href=\"";
-                                                                        if ( !empty($siteUrlv4)) { echo $siteUrlv4; }
+                                                                        if ( (!empty($siteUrlv4)) and (!empty($siteUrlv6)) ) { echo $siteUrlv4; }
                                                                         else  { echo $siteUrl; }
                                                                         echo "/{$val}.bin\" class=\"btn btn-xs btn-secondary\">{$val}</a> ";
-                                                                        }
-                                                        ?>
-                                                        <?php
-                                                        if (!empty($ipv6))
-                                                                {
-                                                                echo "<h4>"._("IPv6 Download Test")."</h4>";
-                                                                foreach ($testFiles as $val)
-                                                                        {
-                                                                        echo "<a href=\"";
-                                                                        if ( !empty($siteUrlv6)) { echo $siteUrlv6; }
-                                                                        else  { echo $siteUrl; }
-                                                                        echo "/{$val}.bin\" class=\"btn btn-xs btn-secondary\">{$val}</a> ";
-                                                                        }
                                                                 }
+                                                        }
+                                                        if (!empty($ipv6)) {
+                                                                echo "<h4>"._("IPv6 Download Test")."</h4>";
+                                                                foreach ($testFiles as $val) {
+                                                                        echo "<a href=\"";
+                                                                        if ( (!empty($siteUrlv6)) and (!empty($siteUrlv4)) ) { echo $siteUrlv6; }
+                                                                        else  { echo $siteUrl; }
+                                                                        echo "/{$val}.bin\" class=\"btn btn-xs btn-secondary\">{$val}</a> ";
+                                                                }
+                                                        }
                                                         ?>
                                                 </div>
                                         </div>
