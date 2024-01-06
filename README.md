@@ -37,42 +37,19 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 
 ## Requirements
 
-* PHP >= 8.0
-* PHP PDO with SQLite driver (required for rate-limit)
+* Docker & Docker Compose V2
 * SSH/Terminal access (able to install commands/functions if non-existent)
-* Make sure the PHP function proc_open is usable
 
 ## Install / Update
 
-1. Clone the repository to the intended folder within your web directory
-2. Move archive to the correct directory
-3. Navigate to the `LookingGlass` subdirectory in terminal
-4. Run `bash configure.sh`
-5. Follow the instructions and `configure.sh` will take care of the rest
+1. Clone the repository to the correct folder for docker containers
+2. Navigate to the `data/webapp/LookingGlass` subdirectory in terminal
+3. Run `bash configure.sh`
+4. Follow the instructions and `configure.sh` will take care of the rest
 	- Note: Re-enter test files to create random test files from `GNU shred`
-
+5. If you want use IPv6, add parameters `"ip6tables": true` and `"experimental": true` to /etc/docker/daemon.json. Do not forget `systemctl restart docker.service`
 _Forgot a setting? Simply run the `configure.sh` script again_
 
-## Apache
-
-An .htaccess is included which protects the rate-limit database, disables indexes, and disables gzip on test files.
-Ensure `AllowOverride` is on for .htaccess to take effect.
-
-Output buffering __should__ work by default.
-
-For an HTTPS setup, please visit:
-- [Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
-
-## Nginx
-
-To enable output buffering, and disable gzip on test files please refer to the provided configuration:
-
-[HTTP setup](LookingGlass/lookingglass-http.nginx.conf)
-
-The provided config is setup for LookingGlass to be on a subdomain/domain root.
-
-For an HTTPS setup please visit:
-- [Mozilla SSL Configuration Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/)
 
 ## License
 
