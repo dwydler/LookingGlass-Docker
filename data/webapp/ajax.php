@@ -26,7 +26,7 @@ if (!empty($_GET["csrf"])) {
 		// check whether command and host are set
 		if (isset($_GET['cmd']) && isset($_GET['host'])) {
 			// define available commands
-			$cmds = array('host', 'mtr', 'mtr6', 'ping', 'ping6', 'traceroute', 'traceroute6');
+			$cmds = array('host', 'host6', 'mtr', 'mtr6', 'ping', 'ping6', 'traceroute', 'traceroute6');
 			// verify command
 			if (in_array($_GET['cmd'], $cmds)) {
 				// include required scripts
@@ -66,3 +66,4 @@ if (!empty($_GET["theme"])) {
 
 // report error
 exit('Unauthorized request!');
+
