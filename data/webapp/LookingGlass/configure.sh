@@ -57,21 +57,6 @@ function createConfig() {
 // Server location
 \$serverLocation = '${LOCATION}';
 
-// HOST
-\$host = '${HOST}';
-
-// MTR
-\$mtr = '${MTR}';
-
-// PING
-\$ping = '${PING}';
-
-// TRACEROUTE
-\$traceroute = '${TRACEROUTE}';
-
-// SQLITE3
-\$sqlite3 = '${SQLITE3}';
-
 // Privacy Url
 \$privacyurl = '${PRIVACYURL}';
 
@@ -131,8 +116,8 @@ function config() {
                                 URLV4=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$siteUrlv6' ]; then
                                 URLV6=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
-                        elif [ $f1 = '$sqlite3' ]; then
-                                SQLITE3=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
+#                        elif [ $f1 = '$sqlite3' ]; then
+#                                SQLITE3=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$privacyurl' ]; then
                                 PRIVACYURL=("$(echo $f2 | awk -F\' '{print $(NF-1)}')")
                         elif [ $f1 = '$imprinturl' ]; then
@@ -152,183 +137,18 @@ function config() {
 ##
 function database() {
 
-        # 
-        if [ ! -f "${DIR}/ratelimit.db" ]; then
-                echo
-                echo 'Creating SQLite database...'
-                sqlite3 ratelimit.db  'CREATE TABLE RateLimit (ip TEXT UNIQUE NOT NULL, hits INTEGER NOT NULL DEFAULT 0, accessed INTEGER NOT NULL);'
-                sqlite3 ratelimit.db 'CREATE UNIQUE INDEX "RateLimit_ip" ON "RateLimit" ("ip");'
-                read -e -p 'Enter the username of your webserver (E.g. www-data): ' -i "$(whoami)" USER
-                read -e -p 'Enter the user group of your webserver (E.g. www-data): ' -i "$(id -g -n)" GROUP
-      
-                # Change owner of folder & DB
-                if [[ -n $USER ]]; then
-                        if [[ -n $GROUP ]]; then
-                                chown $USER:$GROUP "${DIR}"
-                                chown $USER:$GROUP ratelimit.db
-                        else
-                                chown $USER:$USER "${DIR}"
-                                chown $USER:$USER ratelimit.db
-                        fi
-                else
-                cat <<EOF
+	echo
 
-##### IMPORTANT #####
-Please set the owner of LookingGlass (subdirectory) and ratelimit.db
-to that of your webserver:
-chown user:group LookingGlass
-chown user:group ratelimit.db
-#####################
-EOF
-                fi
-        fi
+	# Create a copy of the default database
+	echo "Create a copy of the default database"
+	cp ratelimit.empty.db ratelimit.db
+
+	# Set permissions for folder and database file
+	echo "Set permission for current folder and ratelimit.db"
+	chown www-data:www-data "${DIR}"
+	chown www-data:www-data  ratelimit.db
 }
 
-##
-# Fix MTR on REHL based OS
-##
-function mtrFix() {
-        # Check permissions for MTR & Symbolic link
-        if [ $(stat --format="%a" /usr/sbin/mtr) -ne 4755 ] || [ ! -f "/usr/bin/mtr" ]; then
-                if [ $(id -u) = "0" ]; then
-                        echo 'Fixing MTR permissions...'
-                        chmod 4755 /usr/sbin/mtr
-                        ln -s /usr/sbin/mtr /usr/bin/mtr
-                else
-                        cat <<EOF
-
-##### IMPORTANT #####
-You are not root. Please log into root and run:
-chmod 4755 /usr/sbin/mtr
-ln -s /usr/sbin/mtr /usr/bin/mtr
-#####################
-EOF
-                fi
-        fi
-}
-
-##
-# Check and install script requirements
-##
-function requirements() {
-        sleep 1
-
-        # Check for apt-get/yum
-        if [ -f /usr/bin/apt ]; then
-                # Check for root
-                if [ $(id -u) != "0" ]; then
-                        INSTALL='sudo apt'
-                else
-                        INSTALL='apt'
-                fi
-        elif [ -f /usr/bin/yum ]; then
-                # Check for root
-                if [ $(id -u) != "0" ]; then
-                        INSTALL='sudo yum'
-                else
-                        INSTALL='yum'
-                fi
-        else
-                INSTALL='none'
-
-                cat <<EOF
-
-##### IMPORTANT #####
-Unknown Operating system. Install dependencies manually:
-host mtr iputils-ping traceroute sqlite3
-#####################
-EOF
-        fi
-
-        # command ifconfig
-        echo 'Checking for ifconfig...'
-        if [ ! -f "/sbin/ifconfig" ] && [ ! -f "/bin/ifconfig" ] ; then
-                echo "Please install: ${INSTALL} -y install net-tools."
-                exit
-        echo
-        fi
-
-        # command host
-        echo 'Checking for host...'
-        if [ ! -f "/usr/bin/host" ]; then
-                if [ $INSTALL = 'none' ]; then
-                        HOST='NULL'
-                elif [ $INSTALL = 'yum' ]; then
-                        echo "Please install: ${INSTALL} -y install bind-utils."
-                        exit
-                else
-                        echo "Please install: ${INSTALL} -y install host."
-                        exit
-                fi
-        echo
-        fi
-
-        # command mtr
-        echo 'Checking for mtr...'
-        if [ ! -f "/usr/bin/mtr" ] && [ ! -f "/usr/sbin/mtr" ] ; then
-                if [ $INSTALL = 'none' ]; then
-                        MTR='NULL'
-                else
-                        echo "Please install: ${INSTALL} -y install mtr."
-                        exit
-                fi
-        echo
-        fi
-
-        # command ping
-        echo 'Checking for ping...'
-        if [ ! -f "/bin/ping" ]; then
-                if [ $INSTALL = 'none' ]; then
-                        PING='NULL'
-                else
-                        echo "Please install: ${INSTALL} -y install iputils-ping."
-                        exit
-                fi
-        echo
-        fi
-
-        # command traceroute
-        echo 'Checking for traceroute...'
-        if [ ! -f "/usr/bin/traceroute" ] && [ ! -f "/usr/sbin/traceroute" ]; then
-                if [ "$INSTALL" = "none" ]; then
-                        TRACEROUTE='NULL'
-                else
-                        echo "Please install: ${INSTALL} -y install traceroute."
-                        exit
-                fi
-        echo
-        fi
-
-        # command sqlite3
-        echo 'Checking for sqlite3...'
-        if [ ! -f "/usr/bin/sqlite3" ]; then
-                if [ "$INSTALL" = "none" ]; then
-                        SQLITE3='NULL'
-                elif [ "$INSTALL" = "yum" ]; then
-                        echo "Please install: ${INSTALL} -y install sqlite-devel."
-                        exit
-                else
-                        echo "Please install: ${INSTALL} -y install sqlite3."
-                        exit
-                fi
-        echo
-        fi
-
-        # command iperf3
-        echo 'Checking for iperf3...'
-        if [ ! -f "/usr/bin/iperf3" ]; then
-                if [ "$INSTALL" = "none" ]; then
-                        SQLITE3='NULL'
-                elif [ "$INSTALL" = "yum" ]; then
-                        echo "Please install: ${INSTALL} -y install iperf3."
-                        exit
-                else
-                        echo "Please install: ${INSTALL} -y install iperf3."
-                        exit
-                fi
-        echo
-        fi
-}
 
 ##
 # Setup parameters for PHP file creation
@@ -337,37 +157,42 @@ function setup() {
         sleep 1
 
         # Local vars
-        local IP4=$(ifconfig | sed -n '2 p' | awk '{print $2}')
-        local IP6=$(ifconfig | sed -n '3 p' | awk '{print $2}')
+        local IP4=
+        local IP6=
         local LOC=
         local S=
         local T=
         local U=
 
+	if [[ -z $IPV4 ]]; then
+		IPV4=$(curl -4 ifconfig.me/ip) 
+	fi
+
+	if [[ -z $IPV6 ]]; then
+                IPV6=$(curl -6 ifconfig.me/ip)
+        fi
+
+
         # User input
-        read -e -p "Enter your website name (Header/Logo) [${SITE}]: " S
-        read -e -p "Enter the public URL to this LG (including http://) [${URL}]: " U
+        read -e -p "Enter your website name (Header/Logo) [${SITE}]: " -i "$SITE" S
+        read -e -p "Enter the public URL to this LG (including http://) [${URL}]: " -i "$URL" U
         read -e -p "Enter the public URLv4 to this LG (including http://) [${URLV4}]: " -i "$URLV4" UV4
         read -e -p "Enter the public URLv6 to this LG (including http://) [${URLV6}]: " -i "$URLV6" UV6
         read -e -p "Enter the public URL to an Privacy [${PRIVACYURL}]: " -i "$PRIVACYURL" PRIURL
         read -e -p "Enter the public URL to an Imprint [${IMPRINTURL}]: " -i "$IMPRINTURL" IMPURL
-        read -e -p "Enter the servers location [${LOCATION}]: " LOC
-        read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IP4" IP4
-        read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IP6" IP6
+        read -e -p "Enter the servers location [${LOCATION}]: " -i "$LOCATION" LOC
+        read -e -p "Enter the test IPv4 address [${IPV4}]: " -i "$IPV4" IP4
+        read -e -p "Enter the test IPv6 address [${IPV6}]: " -i "$IPV6" IP6
         read -e -p "Enter the Port for the Ipref Server [${IPERFPORT}]: " -i "$IPERFPORT" IPP
         read -e -p "Enter the size of test files in MB (Example: 100MB 1GB 10GB) [${TEST[*]}]: " T
-        if [ -z $SQLITE3 ]; then
-
-                # Set default value
-                YESNO="y"
-
-                # Check if perviously set an rate limit
-                if [ $RATELIMIT -eq "0" ]; then
-                        YESNO="n"
-                fi
-                
-                read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$YESNO" RATE
-        fi
+        
+	YESNO="y"
+	
+	if [[ ! -z $RATELIMIT ]] && [[ "$RATELIMIT" -eq "0" ]]; then
+		YESNO="n"
+	fi
+	
+        read -e -p "Do you wish to enable rate limiting of network commands? (y/n): " -i "$YESNO" RATE
 
         # Check local vars aren't empty; Set new values  
         if [[ -n $LOC ]]; then
@@ -505,20 +330,11 @@ SITE=
 URL=
 URLV4=
 URLV6=
-HOST=
-MTR=
-PING=
-TRACEROUTE=
-SQLITE3=
 PRIVACYURL=
 IMPRINTURL=
 IPERFPORT=
 TEST=()
 
-# Install required scripts
-echo 'Checking script requirements:'
-requirements
-echo
 
 # Read Config file
 echo 'Checking for previous config:'
@@ -545,16 +361,6 @@ echo
 # Create Config.php file
 echo 'Creating Config.php...'
 createConfig
-
-# Create DB
-if [ -z $SQLITE3 ]; then
-        database
-fi
-
-# Check for RHEL mtr
-if [ "$INSTALL" = 'yum' ] && ["$MTR" = '']; then
-  mtrFix
-fi
 
 # All done
 cat <<EOF
