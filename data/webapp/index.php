@@ -236,8 +236,9 @@ if ( !isset ($_SESSION["theme"])) {
                                                                         <div class="form-group mr-1 col">
                                                                                 <select name="cmd" class="form-select">
                                                                                         <?php
-                                                                                        if ( (!empty($ipv4)) or (!empty($ipv6)) and (empty($host)) ) { echo '<option value="host">host/host6</option>'; }
-                                                                                        if ( (!empty($ipv4)) and (empty($mtr)) ) { echo '<option value="mtr">mtr</option>'; }
+											if ( (!empty($ipv4)) and (empty($host)) ) { echo '<option value="host">host</option>'; }
+                                                                                        if ( (!empty($ipv6)) and (empty($host)) ) { echo '<option value="host6">host6</option>'; }
+											if ( (!empty($ipv4)) and (empty($mtr)) ) { echo '<option value="mtr">mtr</option>'; }
                                                                                         if ( (!empty($ipv6)) and (empty($mtr)) ) { echo '<option value="mtr6">mtr6</option>'; }
                                                                                         if ( (!empty($ipv4)) and (empty($ping)) ) { echo '<option value="ping" selected="selected">ping</option>'; }
                                                                                         if ( (!empty($ipv6)) and (empty($ping)) ) { echo '<option value="ping6">ping6</option>'; }
