@@ -165,11 +165,11 @@ function setup() {
         local U=
 
 	if [[ -z $IPV4 ]]; then
-		IPV4=$(curl -4 ifconfig.me/ip) 
+		IPV4=$(curl -s -4 ifconfig.me/ip) 
 	fi
 
 	if [[ -z $IPV6 ]]; then
-                IPV6=$(curl -6 ifconfig.me/ip)
+                IPV6=$(curl -s -6 ifconfig.me/ip)
         fi
 
 
