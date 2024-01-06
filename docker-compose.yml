@@ -19,8 +19,6 @@ services:
       - php-fpm
     networks:
       lookingglass-frontend:
-        #    environment:
-      #      PORT_IPV6: "80"
 
 
   php-fpm:
