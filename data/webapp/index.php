@@ -198,7 +198,7 @@ if ( !isset ($_SESSION["theme"])) {
                                                         if (!empty($ipv4)) {
                                                                 echo "<h4>"._("IPv4 Download Test")."</h4>";
                                                                 foreach ($testFiles as $val) {
-                                                                        echo "<a href=\"";
+                                                                        echo "<a href=\"//";
                                                                         if ( (!empty($siteUrlv4)) and (!empty($siteUrlv6)) ) { echo $siteUrlv4; }
                                                                         else  { echo $siteUrl; }
                                                                         echo "/{$val}.bin\" class=\"btn btn-xs btn-secondary\">{$val}</a> ";
@@ -207,7 +207,7 @@ if ( !isset ($_SESSION["theme"])) {
                                                         if (!empty($ipv6)) {
                                                                 echo "<h4>"._("IPv6 Download Test")."</h4>";
                                                                 foreach ($testFiles as $val) {
-                                                                        echo "<a href=\"";
+                                                                        echo "<a href=\"//";
                                                                         if ( (!empty($siteUrlv6)) and (!empty($siteUrlv4)) ) { echo $siteUrlv6; }
                                                                         else  { echo $siteUrl; }
                                                                         echo "/{$val}.bin\" class=\"btn btn-xs btn-secondary\">{$val}</a> ";
