@@ -175,9 +175,9 @@ function setup() {
 
         # User input
         read -e -p "Enter your website name (Header/Logo) [${SITE}]: " -i "$SITE" S
-        read -e -p "Enter the public URL to this LG (including http://) [${URL}]: " -i "$URL" U
-        read -e -p "Enter the public URLv4 to this LG (including http://) [${URLV4}]: " -i "$URLV4" UV4
-        read -e -p "Enter the public URLv6 to this LG (including http://) [${URLV6}]: " -i "$URLV6" UV6
+        read -e -p "Enter the public URL to this LG (without http://) [${URL}]: " -i "$URL" U
+        read -e -p "Enter the public URLv4 to this LG (without http://) [${URLV4}]: " -i "$URLV4" UV4
+        read -e -p "Enter the public URLv6 to this LG (without http://) [${URLV6}]: " -i "$URLV6" UV6
         read -e -p "Enter the public URL to an Privacy [${PRIVACYURL}]: " -i "$PRIVACYURL" PRIURL
         read -e -p "Enter the public URL to an Imprint [${IMPRINTURL}]: " -i "$IMPRINTURL" IMPURL
         read -e -p "Enter the servers location [${LOCATION}]: " -i "$LOCATION" LOC

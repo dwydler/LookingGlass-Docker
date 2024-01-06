@@ -129,7 +129,7 @@ if ( !isset ($_SESSION["theme"])) {
                         <div class="row" id="header">
                                 <div class="col-12">
                                         <div class="page-header pb-2 mt-4 mb-2 border-bottom">
-                                                <h1><a id="title" href="<?php echo $siteUrl; ?>?lang=<?php echo $locale;?>"><?php echo $siteName; ?></a></h1>
+                                                <h1><a id="title" href="//<?php echo $siteUrl; ?>?lang=<?php echo $locale;?>"><?php echo $siteName; ?></a></h1>
                                         </div>
                                 </div>
                         </div>
@@ -143,9 +143,9 @@ if ( !isset ($_SESSION["theme"])) {
                                                         echo _("Network information")." ";
 
                                                         if ( (!empty($siteUrlv4)) && (!empty($siteUrlv6)) ) {
-                                                                echo "( <a href=\"".$siteUrl."?lang=".$locale."\">"._("DualStack")."</a> |
-                                                                        <a href=\"".$siteUrlv4."?lang=".$locale."\">"._("Only IPv4")."</a> |
-                                                                                <a href=\"".$siteUrlv6."?lang=".$locale."\">"._("Only IPv6")."</a> )";
+                                                                echo "( <a href=\"//".$siteUrl."?lang=".$locale."\">"._("DualStack")."</a> |
+                                                                        <a href=\"//".$siteUrlv4."?lang=".$locale."\">"._("Only IPv4")."</a> |
+                                                                                <a href=\"//".$siteUrlv6."?lang=".$locale."\">"._("Only IPv6")."</a> )";
                                                         }
                                                         ?>
 
