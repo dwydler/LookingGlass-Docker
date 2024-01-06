@@ -1,3 +1,3 @@
-LookingGlass/Config.php
-LookingGlass/ratelimit.db
-*.bin
+data/webapp/LookingGlass/Config.php
+data/webapp/LookingGlass/ratelimit.db
+data/webapp/*.bin
