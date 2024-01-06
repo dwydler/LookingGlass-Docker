@@ -361,6 +361,7 @@ echo
 # Create Config.php file
 echo 'Creating Config.php...'
 createConfig
+database
 
 # All done
 cat <<EOF
