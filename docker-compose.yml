@@ -18,7 +18,7 @@ services:
     links:
       - php-fpm
     networks:
-      lookingglass-frontend:
+      frontend:
 
 
   php-fpm:
@@ -35,7 +35,7 @@ services:
       - "./conf/php-fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf:rw"
       - "./data/webapp:/var/www/html:rw"
     networks:
-      lookingglass-frontend:
+      frontend:
 
 
   iperf:
@@ -50,11 +50,11 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
-      lookingglass-frontend:
+      frontend:
 
 
 networks:
-  lookingglass-frontend:
+  frontend:
     enable_ipv6: true
     ipam:
       config:
