@@ -24,14 +24,10 @@ Demo is running on a Cloud Server of Hetzner Online GmbH.
 
 ## Implemented commands
 
-* host
-* host (IPv6)
-* mtr
-* mtr6 (IPv6)
-* ping
-* ping6 (IPv6)
-* traceroute
-* traceroute6 (IPv6)
+* host, host6
+* mtr, mtr6
+* ping, ping6
+* traceroute, traceroute6
 
 __IPv6 commands will only work if your server has external IPv6 setup (or tunneled)__
 
