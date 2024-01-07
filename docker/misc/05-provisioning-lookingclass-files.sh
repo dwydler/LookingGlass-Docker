@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Create folder for docker containers
