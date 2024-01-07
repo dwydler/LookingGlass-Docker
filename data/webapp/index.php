@@ -118,7 +118,7 @@ if ( !isset ($_SESSION["theme"])) {
                 </script>
 
                 <!-- Styles -->
-                <link href="assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+                <link href="assets/css/bootstrap-5.3.2.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         </head>
 
         <body>
@@ -312,7 +312,7 @@ if ( !isset ($_SESSION["theme"])) {
                         </footer>
                 </div>
 
-                <script src="assets/js/jquery-3.7.0.min.js" integrity="sha384-NXgwF8Kv9SSAr+jemKKcbvQsz+teULH/a5UNJvZc6kP47hZgl62M1vGnw6gHQhb1" crossorigin="anonymous"></script>
+                <script src="assets/js/jquery-3.7.1.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous"></script>
                 <script src="./assets/js/LookingGlass.min.js" integrity="sha384-w4tIL6kME8xykSWCs7Ozn9tlviYGkA2j/2aMwOtMeWTaHBYgiKJurCb0xVxK1Z1q" crossorigin="anonymous"></script>
                 <script src="assets/js/XMLHttpRequest.min.js" integrity="sha384-4VZLxIdUn1yFnVIpiKDpf6aLhTZKitRINfJd0cyDjhM9c0fh+GzljUdTy38VXCvP" crossorigin="anonymous"></script>
         </body>
