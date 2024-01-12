@@ -43,7 +43,14 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 3. Run `bash configure.sh`
 4. Follow the instructions and `configure.sh` will take care of the rest
 	- Note: Re-enter test files to create random test files from `GNU shred`
-5. If you want use IPv6, add parameters `"ip6tables": true` and `"experimental": true` to /etc/docker/daemon.json. Do not forget `systemctl restart docker.service`
+5. For IPv6 support, edit the Docker daemon configuration file, located at /etc/docker/daemon.json. Configure the following parameters:
+````
+{
+  "experimental": true,
+  "ip6tables": true
+}
+````
+	- Note: Run `systemctl restart docker.service` to restart docker.
 
 _Forgot a setting? Simply run the `configure.sh` script again_
 
