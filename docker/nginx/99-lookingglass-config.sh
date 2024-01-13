@@ -84,10 +84,13 @@ EOF
 function database() {
 
         # Create a copy of the default database
-        echo "Create a copy of the default database."
+        echo "Chekf if an database already exist."
 
         if [ ! -f ratelimit.db ]; then
-                cp ratelimit.empty.db ratelimit.db
+
+		echo 'Creating SQLite database...'
+		sqlite3 ratelimit.db  'CREATE TABLE RateLimit (ip TEXT UNIQUE NOT NULL, hits INTEGER NOT NULL DEFAULT 0, accessed INTEGER NOT NULL);'
+                sqlite3 ratelimit.db 'CREATE UNIQUE INDEX "RateLimit_ip" ON "RateLimit" ("ip");'		
                 echo "New database copied successfully."
         else
                 echo "Database already exists. Skip."
