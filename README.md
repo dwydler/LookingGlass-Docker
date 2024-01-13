@@ -39,11 +39,9 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 ## Install / Update
 
 1. Clone the repository to the correct folder for docker containers
-2. Navigate to the `data/webapp/LookingGlass` subdirectory in terminal
-3. Run `bash configure.sh`
-4. Follow the instructions and `configure.sh` will take care of the rest
-	- Note: Re-enter test files to create random test files from `GNU shred`
-5. For IPv6 support, edit the Docker daemon configuration file, located at /etc/docker/daemon.json. Configure the following parameters and run `systemctl restart docker.service` to restart docker:
+2. Editing lookingglass.env and set your parameters and data.
+_Note: Any change requires an restart of the containers
+3. For IPv6 support, edit the Docker daemon configuration file, located at /etc/docker/daemon.json. Configure the following parameters and run `systemctl restart docker.service` to restart docker:
   ```
   {
     "experimental": true,
