@@ -20,21 +20,21 @@ docker buildx use lookingglass
 
 
 #
-cd /opt/containers/LookingGlass-Docker/docker/nginx
+cd /opt/containers/lookingglass/docker/nginx
 docker buildx build \
        	--platform linux/arm64,linux/amd64 \
        	-t wydler/lookingglass-web:$CONTAINERTAG \
        	. \
 	--push
 
-cd /opt/containers/LookingGlass-Docker/docker/php-fpm
+cd /opt/containers/lookingglass/docker/php-fpm
 docker buildx build \
        	--platform linux/arm64,linux/amd64 \
        	-t wydler/lookingglass-php:$CONTAINERTAG \
        	. \
        	--push
 
-cd /opt/containers/LookingGlass-Docker/docker/ipref3
+cd /opt/containers/lookingglass/docker/ipref3
 docker buildx build \
        	--platform linux/arm64,linux/amd64 \
        	-t wydler/lookingglass-iperf:$CONTAINERTAG \
