@@ -91,6 +91,20 @@ else {
 if ( !isset ($_SESSION["theme"])) {
         $_SESSION["theme"] = "light";
 }
+
+//
+function get_client_ip() {
+        if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
+                return  $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        else if (array_key_exists('REMOTE_ADDR', $_SERVER)) {
+                return $_SERVER['REMOTE_ADDR'];
+        }
+        else {
+                return $_SERVER['HTTP_CLIENT_IP'];
+        }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -155,7 +169,7 @@ if ( !isset ($_SESSION["theme"])) {
                                                          echo _("Server Location").": <strong>".$serverLocation."</strong></p>";
                                                          if (!empty($ipv4)) { echo _("IPv4 Address").": ".$ipv4."</p>"; }
                                                          if (!empty($ipv6)) { echo "<p>"._("IPv6 Address").": ".$ipv6."</p>"; }
-                                                         echo "<p>"._("Your IP Address").": <strong><a href=\"#tests\" id=\"userip\">". $_SERVER['REMOTE_ADDR']."</a></strong></p>";
+                                                         echo "<p>"._("Your IP Address").": <strong><a href=\"#tests\" id=\"userip\">". get_client_ip() ."</a></strong></p>";
                                                         ?>
                                                 </div>
                                         </div>
