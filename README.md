@@ -48,8 +48,6 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
   }
   ```
 
-_Forgot a setting? Simply run the `configure.sh` script again_
-
 
 ## License
 
