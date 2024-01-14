@@ -38,15 +38,17 @@ __IPv6 commands will only work if your server has external IPv6 setup (or tunnel
 
 ## Install / Update
 
-1. Clone the repository to the correct folder for docker containers
-2. Editing lg.default.env and set your parameters and data. Any change requires an restart of the containers.
-3. For IPv6 support, edit the Docker daemon configuration file, located at /etc/docker/daemon.json. Configure the following parameters and run `systemctl restart docker.service` to restart docker:
+1. Clone the repository to the correct folder for docker containers.
+2. Navigate to into the application folder (e.g. /opt/containers/lookingglass)
+3. Editing lg.default.env and set your parameters and data. Any change requires an restart of the containers.
+4. For IPv6 support, edit the Docker daemon configuration file, located at /etc/docker/daemon.json. Configure the following parameters and run `systemctl restart docker.service` to restart docker:
   ```
   {
     "experimental": true,
     "ip6tables": true
   }
   ```
+5. Starting application with ` docker compose -f docker-compose.yml up -d`
 
 
 ## License
