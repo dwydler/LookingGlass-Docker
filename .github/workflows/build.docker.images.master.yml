@@ -1,13 +1,14 @@
 name: Build & publish docker images (master)
 on:
-  push:
-    branches:
-      - 'master'
-    tags-ignore:
-      - '**'
-    paths-ignore:
-      - 'README.md'
-      - '.github/workflows/**'
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - 'master'
+#    tags-ignore:
+#      - '**'
+#    paths-ignore:
+#      - 'README.md'
+#      - '.github/workflows/**'
 
 
 jobs:
