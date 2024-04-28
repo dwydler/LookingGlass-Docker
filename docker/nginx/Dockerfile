@@ -17,7 +17,7 @@ RUN apt clean
 RUN rm -r /var/lib/apt/lists/*
 
 #
-COPY 99-lookingglass-config.sh /docker-entrypoint.d/
+COPY /docker/nginx/99-lookingglass-config.sh /docker-entrypoint.d/
 
 #
 CMD ["nginx", "-g", "daemon off;"]
