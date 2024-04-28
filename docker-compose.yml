@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   web:
-    image: "wydler/lookingglass-web:dev"
+    image: "wydler/lookingglass-web"
     container_name: "lookingglass_www"
     restart: "unless-stopped"
     ports:
@@ -24,7 +24,7 @@ services:
 
 
   php-fpm:
-    image:  "wydler/lookingglass-php:dev"
+    image:  "wydler/lookingglass-php"
     container_name: "lookingglass_php-fpm"
     restart: "unless-stopped"
     user: "33:33"
@@ -41,7 +41,7 @@ services:
 
 
   iperf:
-    image: "wydler/lookingglass-iperf:dev"
+    image: "wydler/lookingglass-iperf"
     container_name: "lookingglass_iperf"
     restart: "unless-stopped"
     ports:
