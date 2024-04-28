@@ -292,7 +292,7 @@ function get_client_ip() {
                                         <?php echo _("Powered by").": "; ?><a target="_blank" href="https://github.com/telephone/LookingGlass">LookingGlass</a>&nbsp;|&nbsp;
                                         </div>
                                         <div class="col col-lg-auto mx-0 px-0">
-                                        <?php echo _("Modified by").": "; ?><a target="_blank" href="https://codeberg.org/wd/LookingGlass">Daniel Wydler</a>&nbsp;|&nbsp;
+                                        <?php echo _("Modified by").": "; ?><a target="_blank" href="https://github.com/dwydler/LookingGlass-Docker">Daniel Wydler</a>&nbsp;|&nbsp;
                                         </div>
                                         <div class="col col-lg-auto mx-0 px-0">
                                         <?php echo _("Language").": "; ?> <a href="?lang=en_US">EN</a> <a href="?lang=de_DE">DE</a>
