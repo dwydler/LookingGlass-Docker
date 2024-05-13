@@ -26,3 +26,11 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major","version-update:semver-minor"]
+
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/docker/ipref3/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
