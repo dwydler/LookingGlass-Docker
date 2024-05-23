@@ -1,5 +1,5 @@
 # Reference image
-FROM alpine:3.19
+FROM alpine:3.20
 
 # Metadata
 LABEL org.opencontainers.image.authors="Daniel Wydler"
