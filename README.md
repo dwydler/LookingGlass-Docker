@@ -30,28 +30,28 @@ You can find an overview [here](https://github.com/dwydler/LookingGlass/tree/cus
   ```
     curl https://raw.githubusercontent.com/dwydler/LookingGlass-Docker/master/misc/01-docker.io-installation.sh | bash
   ```
-2. Clone the repository to the correct folder for docker container:
-  ```
-   git clone https://github.com/dwydler/LookingGlass-Docker.git /opt/containers/lookingglass
-   git -C /opt/containers/lookingglass checkout $(git -C /opt/containers/lookingglass tag | tail -1)
-  ```
-3. Download dependencies:
-  ```
-   git -C /opt/containers/lookingglass submodule update --init --recursive
-   git -C /opt/containers/lookingglass/data/webapp checkout $(git -C /opt/containers/lookingglass/data/webapp tag | tail -1)
-  ```
-4. Make a copy of the file lg.default.env named lg.env
-  ```
-  cp /opt/containers/lookingglass/lg.default.env /opt/containers/lookingglass/lg.env
-  ```
-5. Editing lg.env and set your parameters and data. Any change requires an restart of the containers.
-6. For IPv6 support, edit the Docker daemon configuration file, located at /etc/docker/daemon.json. Configure the following parameters and run `systemctl restart docker.service` to restart docker:
+2. For IPv6 support, edit the Docker daemon configuration file, located at /etc/docker/daemon.json. Configure the following parameters and run `systemctl restart docker.service` to restart docker:
   ```
   {
     "experimental": true,
     "ip6tables": true
   }
   ```
+3. Clone the repository to the correct folder for docker container:
+  ```
+   git clone https://github.com/dwydler/LookingGlass-Docker.git /opt/containers/lookingglass
+   git -C /opt/containers/lookingglass checkout $(git -C /opt/containers/lookingglass tag | tail -1)
+  ```
+4. Download dependencies:
+  ```
+   git -C /opt/containers/lookingglass submodule update --init --recursive
+   git -C /opt/containers/lookingglass/data/webapp checkout $(git -C /opt/containers/lookingglass/data/webapp tag | tail -1)
+  ```
+5. Make a copy of the file lg.default.env named lg.env
+  ```
+  cp /opt/containers/lookingglass/lg.default.env /opt/containers/lookingglass/lg.env
+  ```
+6. Editing lg.env and set your parameters and data. Any change requires an restart of the containers.
 7. Starting application with `docker compose -f /opt/containers/lookingglass/docker-compose.yml up -d`.
 8. Don't forget to test, that the application works successfully (e.g. http(s)://IP-Addresse or FQDN/).
 
