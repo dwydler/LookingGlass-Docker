@@ -7,7 +7,7 @@ This is a port of the native [Looking Glass application](https://github.com/dwyd
 
 
 ## Demo
-[Looking Glass](https://lg.daniel.wydler.eu/)
+[Looking Glass](http://lg.n01.cl01.daniel.wydler.eu/)
 
 Demo is running on a Cloud Server of Hetzner Online GmbH. 
 
