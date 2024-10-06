@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   web:
-    image: "wydler/lookingglass-web"
+    image: "wydler/lookingglass-web:${DOCKER_HUB_CONTAINER_TAG}"
     container_name: "lookingglass_www"
     restart: "unless-stopped"
     ports:
@@ -16,7 +16,7 @@ services:
       - "./data/webapp:/var/www/html:rw"
       - "./conf/nginx/default.conf:/etc/nginx/conf.d/default.conf:rw"
     env_file:
-      - lg.env
+      - .env
     links:
       - php-fpm
     networks:
@@ -24,7 +24,7 @@ services:
 
 
   php-fpm:
-    image:  "wydler/lookingglass-php"
+    image:  "wydler/lookingglass-php:${DOCKER_HUB_CONTAINER_TAG}"
     container_name: "lookingglass_php-fpm"
     restart: "unless-stopped"
     user: "33:33"
@@ -41,7 +41,7 @@ services:
 
 
   iperf:
-    image: "wydler/lookingglass-iperf"
+    image: "wydler/lookingglass-iperf:${DOCKER_HUB_CONTAINER_TAG}"
     container_name: "lookingglass_iperf"
     restart: "unless-stopped"
     ports:

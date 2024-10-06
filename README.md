@@ -47,9 +47,9 @@ You can find an overview [here](https://github.com/dwydler/LookingGlass/tree/cus
    git -C /opt/containers/lookingglass submodule update --init --recursive
    git -C /opt/containers/lookingglass/data/webapp checkout $(git -C /opt/containers/lookingglass/data/webapp tag | tail -1)
   ```
-5. Make a copy of the file lg.default.env named lg.env
+5. Make a copy of the file "lg.default.env" named ".env"
   ```
-  cp /opt/containers/lookingglass/lg.default.env /opt/containers/lookingglass/lg.env
+  cp /opt/containers/lookingglass/lg.default.env /opt/containers/lookingglass/.env
   ```
 6. Editing lg.env and set your parameters and data. Any change requires an restart of the containers.
 7. Starting application with `docker compose -f /opt/containers/lookingglass/docker-compose.yml up -d`.
