@@ -10,7 +10,7 @@ updates:
     schedule:
       interval: "weekly"
       timezone: "Europe/Berlin"
-      day: "monday"
+      day: "saturday"
       time: "05:00"
     ignore:
       - dependency-name: "*"
@@ -21,7 +21,7 @@ updates:
     schedule:
       interval: "weekly"
       timezone: "Europe/Berlin"
-      day: "monday"
+      day: "saturday"
       time: "05:00"
     ignore:
       - dependency-name: "*"
@@ -30,7 +30,10 @@ updates:
   - package-ecosystem: "docker" # See documentation for possible values
     directory: "/docker/ipref3/" # Location of package manifests
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      timezone: "Europe/Berlin"
+      day: "saturday"
+      time: "05:00"
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
