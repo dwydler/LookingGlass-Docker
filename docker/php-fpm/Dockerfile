@@ -1,5 +1,5 @@
 # Reference image
-FROM php:8.4.7-fpm
+FROM php:8.4.8-fpm
 
 # Metadata
 LABEL org.opencontainers.image.authors="Daniel Wydler"
