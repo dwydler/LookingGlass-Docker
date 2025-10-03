@@ -1,0 +1,22 @@
+name: "Tools - Validate Dockerfile Schema"
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+
+jobs:
+  validate-dockerfile-schema:
+    name: Haskell Linter
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      
+    steps:
+      - uses: actions/checkout@v3
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          recursive: true
+          ignore: "DL3008,DL3015,DL3018"
