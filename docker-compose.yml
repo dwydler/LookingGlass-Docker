@@ -1,3 +1,4 @@
+---
 version: "3.9"
 
 services:
@@ -24,7 +25,7 @@ services:
 
 
   php-fpm:
-    image:  "wydler/lookingglass-php:${DOCKER_HUB_CONTAINER_TAG}"
+    image: "wydler/lookingglass-php:${DOCKER_HUB_CONTAINER_TAG}"
     container_name: "lookingglass_php-fpm"
     restart: "unless-stopped"
     user: "33:33"
