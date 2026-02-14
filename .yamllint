@@ -1,9 +1,14 @@
 ---
 extends: default
 
-ignore: |
-  .github/
+yaml-files:
+  - '*.yaml'
+  - '*.yml'
+  - '.yamllint'
+  - '*.yml.example'
 
 rules:
   empty-lines:
     level: warning
+  line-length:
+    max: 235

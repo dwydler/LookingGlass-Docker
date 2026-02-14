@@ -1,3 +1,4 @@
+---
 # To get started with Dependabot version updates, you'll need to specify which
 # package ecosystems to update and where the package manifests are located.
 # Please see the documentation for all configuration options:
@@ -5,8 +6,8 @@
 
 version: 2
 updates:
-  - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/docker/php-fpm/" # Location of package manifests
+  - package-ecosystem: "docker"  # See documentation for possible values
+    directory: "/docker/php-fpm/"  # Location of package manifests
     schedule:
       interval: "weekly"
       timezone: "Europe/Berlin"
@@ -14,10 +15,10 @@ updates:
       time: "05:00"
     ignore:
       - dependency-name: "*"
-        update-types: ["version-update:semver-major","version-update:semver-minor"]
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
 
-  - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/docker/nginx/" # Location of package manifests
+  - package-ecosystem: "docker"  # See documentation for possible values
+    directory: "/docker/nginx/"  # Location of package manifests
     schedule:
       interval: "weekly"
       timezone: "Europe/Berlin"
@@ -27,8 +28,8 @@ updates:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
 
-  - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/docker/ipref3/" # Location of package manifests
+  - package-ecosystem: "docker"  # See documentation for possible values
+    directory: "/docker/ipref3/"  # Location of package manifests
     schedule:
       interval: "weekly"
       timezone: "Europe/Berlin"

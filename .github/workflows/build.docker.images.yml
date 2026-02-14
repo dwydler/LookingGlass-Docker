@@ -75,7 +75,7 @@ jobs:
       - name: Create tag list for docker image
         id: tags
         run: |
-        
+
           # basename does remove the directory prefix of a path
           # https://stackoverflow.com/questions/3294072/get-last-dirname-filename-in-a-file-path-argument-in-bash
           container_tag=$(basename ${{ github.ref_name }})
