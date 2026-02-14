@@ -62,4 +62,3 @@ networks:
     ipam:
       config:
         - subnet: fd00:cafe:face:feed::/64
-
