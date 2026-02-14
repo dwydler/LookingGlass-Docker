@@ -6,8 +6,8 @@
 
 version: 2
 updates:
-  - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/docker/php-fpm/" # Location of package manifests
+  - package-ecosystem: "docker"  # See documentation for possible values
+    directory: "/docker/php-fpm/"  # Location of package manifests
     schedule:
       interval: "weekly"
       timezone: "Europe/Berlin"
@@ -17,8 +17,8 @@ updates:
       - dependency-name: "*"
         update-types: ["version-update:semver-major","version-update:semver-minor"]
 
-  - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/docker/nginx/" # Location of package manifests
+  - package-ecosystem: "docker"  # See documentation for possible values
+    directory: "/docker/nginx/"  # Location of package manifests
     schedule:
       interval: "weekly"
       timezone: "Europe/Berlin"
@@ -28,8 +28,8 @@ updates:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
 
-  - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/docker/ipref3/" # Location of package manifests
+  - package-ecosystem: "docker"  # See documentation for possible values
+    directory: "/docker/ipref3/"  # Location of package manifests
     schedule:
       interval: "weekly"
       timezone: "Europe/Berlin"
